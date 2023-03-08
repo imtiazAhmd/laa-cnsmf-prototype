@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Solicitor details</h1>
+            <form class="form" action="/provider/case_details" method="post">
+                {% call govukFieldset({}) %}
+                {# Full Name #}
+                {{ govukInput({
+                label: {
+                    text: "Solicitor full name"
+                },
+                classes: "govuk-input--width-20",
+                hint: {
+                    text: "Or fellow of the institute of legal executives instructed"
+                },
+                id: "solicitor_fullname",
+                name: "solicitor_fullname",
+                value: data['solicitor_fullname']
+                }) }}
+                {# Reference #}
+                {{ govukInput({
+                label: {
+                    text: "Solicitor reference"
+                },
+                classes: "govuk-input--width-20",
+                id: "solicitor_reference",
+                name: "solicitor_reference"
+                }) }}
+                {# Telephone #}
+                {{ govukInput({
+                label: {
+                    text: "Telephone number"
+                },
+                classes: "govuk-input--width-20",
+                id: "solicitor_tel",
+                name: "solicitor_tel"
+                }) }}
+                {# Email #}
+                {{ govukInput({
+                label: {
+                    text: "Email address"
+                },
+                classes: "govuk-input--width-20",
+                id: "solicitor_email",
+                name: "solicitor_email"
+                }) }}
+                {% endcall %}
+                {# Address #}
+                {% call govukFieldset({
+                    legend: {
+                        text: "Address",
+                        classes: "govuk-fieldset__legend--m",
+                        isPageHeading: true
+                    }
+                    }) %}
+                {{ govukInput({
+                        label: {
+                        text: 'Address line 1'
+                        },
+                        id: "address_line1",
+                        name: "address_line1",
+                        autocomplete: "address-line1"
+                    }) }}
+                {{ govukInput({
+                        label: {
+                        text: "Town or city"
+                        },
+                        classes: "govuk-!-width-two-thirds",
+                        id: "address_town",
+                        name: "address_town",
+                        autocomplete: "address-level2"
+                    }) }}
+                {{ govukInput({
+                        label: {
+                        text: "Postcode"
+                        },
+                        classes: "govuk-input--width-10",
+                        id: "address_postcode",
+                        name: "address_postcode",
+                        autocomplete: "postal-code"
+                    }) }}
+                {% endcall %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    name: "reporder_attachment_choice",
+                    id: "reporder_attachment-_hoice",
+                    fieldset: {
+                        legend: {
+                        text: "Attach representation order",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                        text: "How will you attach your representation order"
+                    },
+                    items: [
+                        {
+                        value: "document_exchange",
+                        text: "Document Exchange"
+                        },
+                        {
+                        value: "post",
+                        text: "Post"
+                        }
+                    ]
+                }) }}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-thirds">
+            <h1 class="govuk-heading-l">Case disposal</h1>
+
+            <form class="form" action="reason_for_claim" method="post">
+                {% set dateOfIssue %}
+                {{ govukDateInput({
+                    id: "case_deisposal-date_of_issue",
+                    namePrefix: "case_disposal[date_of_issue]",
+                    fieldset: {
+                        legend: {
+                        text: "Date of issue"
+                        }
+                    },
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                }) }}
+                {% endset -%}
+                {% set dateOfCrackedTrial %}
+                {{ govukDateInput({
+                    id: "case_disposal-date_of_cracked_trial",
+                    namePrefix: "case_disposal[date_of_cracked_trial]",
+                    fieldset: {
+                        legend: {
+                        text: "Date guilty plea indicated to solicitor"
+                        }
+                    },
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                }) }}
+                {% endset -%}
+                {# Category 1 #}
+                {{ govukCheckboxes({
+                    name: "case_disposal[category_1]",
+                    fieldset: {
+                        legend: {
+                        text: "Category 1",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                        text: "Select all options that are relevant to you."
+                    },
+                    items: [
+                        {
+                        value: "guilty_plea",
+                        text: "Guilty plea"
+                        },
+                        {
+                        value: "uncontested_breach",
+                        text: "Uncontested breach"
+                        },
+                        {
+                        value: "discontinuance_or_withdrawal",
+                        text: "Discontinuance or withdrawal"
+                        },
+                        {
+                        value: "bind_over",
+                        text: "Bind over"
+                        },
+                        {
+                        value: "deffered_sentence_hearing",
+                        text: "Deffered sentence hearing"
+                        },
+                        {
+                        value: "change_of_solicitor",
+                        text: "Change of solicitor"
+                        },
+                        {
+                        value: "warrant_of_arrest",
+                        text: "Warrent of arrest",
+                        conditional: {
+                            html: dateOfIssue
+                        }
+                        }
+                    ]
+                    }) }}
+
+                {# Category 2 #}
+
+                {{ govukCheckboxes({
+                    name: "category_2",
+                    fieldset: {
+                        legend: {
+                        text: "Category 2",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                        text: "Select all options that are relevant to you."
+                    },
+                    items: [
+                        {
+                        value: "no_guilty_plea",
+                        text: "No guilty plea"
+                        },
+                        {
+                        value: "cracked_trial",
+                        text: "Cracked trial",
+                        conditional: {
+                            html: dateOfCrackedTrial
+                        }
+                        },
+                        {
+                        value: "contested_breach",
+                        text: "Contested breach"
+                        },
+                        {
+                        value: "discontinuance_or_withdrawal_or_bind_over_or_no_evidence_offered_after_case_fully_prepared",
+                        text: "Discontinuance or withdrawal or bind over or no evidence offered after case fully prepared"
+                        },
+                        {
+                        value: "mixed_plea",
+                        text: "Mixed plea"
+                        }
+                    ]
+                    }) }}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

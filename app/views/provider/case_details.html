@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Case details</h1>
+            <form class="form" action="case_disposal" method="post">
+                {{ govukSelect({
+                    id: "main_offence",
+                    name: "main_offence",
+                    label: {
+                        text: "Main offence"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    items: offences
+                }) }}
+                {{ govukDateInput({
+                    id: "offence-commited",
+                    namePrefix: "offence-commited",
+                    fieldset: {
+                        legend: {
+                        text: "Date offence comitted"
+                        }
+                    },
+                    hint: {
+                        text: "For example, 27 3 2023"
+                    }
+                }) }}
+
+                {{ govukRadios({
+                    id: "councel_assigned",
+                    name: "councel_assigned",
+                    fieldset: {
+                        legend: {
+                        text: "Was councel assigned ?"
+                        }
+                    },
+                    items: [
+                        {
+                        value: "yes",
+                        text: "Yes"
+                        },
+                        {
+                        value: "no",
+                        text: "No",
+                        hint: {
+                            text: "Maximum fee principle applies"
+                        }
+                        }
+                    ]
+                }) }}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

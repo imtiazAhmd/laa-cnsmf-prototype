@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Total costs</h1>
+            <form class="form" action="claim_for_costs" method="post">
+                <div>
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">Travel</caption>
+                        <thead class="govuk-table__head"></thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {# Waiting #}
+                <div>
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">Waiting</caption>
+                        <thead class="govuk-table__head"></thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {# Attendences #}
+                <div>
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">Attendances</caption>
+                        <thead class="govuk-table__head"></thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                {# Preparation #}
+                <div>
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">Preparation</caption>
+                        <thead class="govuk-table__head"></thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                {# Advocacy #}
+                <div>
+                    <table class="govuk-table">
+                        <caption class="govuk-table__caption govuk-table__caption--m">Advocacy</caption>
+                        <thead class="govuk-table__head"></thead>
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Time</th>
+                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Total costs</th>
+                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

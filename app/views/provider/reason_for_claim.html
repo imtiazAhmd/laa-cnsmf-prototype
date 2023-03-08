@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-thirds">
+            <h1 class="govuk-heading-l">Why are you claiming a non standard fee claim</h1>
+
+            <form class="form" action="claim_details" method="post">
+                {% set repOrderDateWithdrawnOn %}
+                {{ govukDateInput({
+                    id: "rep_order_date_withdrawn_on",
+                    namePrefix: "rep_order_date_withdrawn_on",
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                }) }}
+                {% endset -%}
+
+                {% set otherReasonForClaiming %}
+                {{ govukInput({
+                    id: "other_reason_for_claiming",
+                    name: "other_reason_for_claiming",
+                    type: "text",
+                    classes: "govuk-!-width-one-third",
+                    label: {
+                        text: ""
+                    }
+                    }) }}
+                {% endset -%}
+                {# Choice of reasons #}
+                {{ govukCheckboxes({
+                    name: "reason_for_claim[]",
+                    fieldset: {
+                        legend: {
+                        text: "Tick the boxes that apply",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    hint: {
+                        text: "Select all options that are relevant to you."
+                    },
+                    items: [
+                        {
+                        value: "guilty_plea",
+                        text: "Core costs exceed higher limit"
+                        },
+                        {
+                        value: "uncontested_breach",
+                        text: "Enhanced rates claimed"
+                        },
+                        {
+                        value: "discontinuance_or_withdrawal",
+                        text: "Councel or agent assigned"
+                        },
+                        {
+                        value: "warrant_of_arrest",
+                        text: "Representation order withdrawn on",
+                        conditional: {
+                            html: repOrderDateWithdrawnOn}
+                        },
+                        {
+                        value: "discontinuance_or_withdrawal",
+                        text: "Extradition"
+                        },
+                        {
+                        value: "discontinuance_or_withdrawal",
+                        text: "Other, give details",
+                        conditional: {
+                            html: otherReasonForClaiming}
+                        }
+                    ]
+                    }) }}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

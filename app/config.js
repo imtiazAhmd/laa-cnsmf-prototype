@@ -29,5 +29,42 @@ module.exports = {
   useBrowserSync: 'true',
 
   // Password to stop anyone finding your prototype accidentally and mistaking it for a real service.
-  systemPassword: '12345'
+  systemPassword: '12345',
+
+  // App title
+  appTitle: 'Non Standard Magistrate Fees',
+
+  // Prototype Notice
+  prototypeNotice:
+    'It is important for you to understand that this is a Prototype and not in production. It should not be used to apply for Non-standard magistrate fees. This service is only to get a better understanding of the proposed system journey for eForm CRM7.',
+
+  // Sample data
+  offenceData: [
+    { value: 'Murder/Manslaughter', text: 'Murder/Manslaughter' },
+    { value: 'Driving Offences', text: 'Driving Offences' },
+    { value: 'Burglary & Robbery', text: 'Burglary & Robbery' },
+    { value: 'Firearms Offences', text: 'Firearms Offences' },
+    {
+      value: 'Other offences against the person',
+      text: 'Other offences against the person',
+    },
+    {
+      value: 'Exploitation / human trafficking offences',
+      text: 'Exploitation / human trafficking offences',
+    },
+    { value: 'Public Order Offences', text: 'Public Order Offences' },
+    { value: 'Regulatory Offences', text: 'Regulatory Offences' },
+    { value: 'Standard Cases', text: 'Standard Cases' },
+    { value: 'Terrorism', text: 'Terrorism' },
+    { value: 'Serious Violence', text: 'Serious Violence' },
+    { value: 'Sexual Offences (children)', text: 'Sexual Offences (children)' },
+    { value: 'Sexual Offences (adult)', text: 'Sexual Offences (adult)' },
+    { value: 'Dishonesty', text: 'Dishonesty' },
+    { value: 'Property Damage Offences', text: 'Property Damage Offences' },
+    {
+      value: 'Offences Against the Public Interest',
+      text: 'Offences Against the Public Interest',
+    },
+    { value: 'Drugs Offences', text: 'Drugs Offences' },
+  ],
 }

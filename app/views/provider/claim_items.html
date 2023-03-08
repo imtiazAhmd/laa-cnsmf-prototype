@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">What are you claiming ?</h1>
+            <form class="form" action="work_item_lists" method="post">
+                {{ govukRadios({
+                    name: "claim_items[claim_types]",
+                    items: [
+                        {
+                        value: "attendance_without_counsel_assigned",
+                        text: "Attendance without counsel assigned"
+                        },
+                        {
+                        value: "advocacy",
+                        text: "Advocacy"
+                        },
+                        {
+                        value: "wales",
+                        text: "Wales"
+                        },
+                        {
+                        value: "northern-ireland",
+                        text: "Northern Ireland"
+                        }
+                    ]
+                }) }}
+                {{ govukInput({
+                    label: {
+                        text: "Fee earner initials"
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[fee_earners_initial]"
+                }) }}
+
+                {{ govukDateInput({
+                    id: "claim_items-claim_date",
+                    namePrefix: "claim_items[claim_date]",
+                    fieldset: {
+                        legend: {
+                        text: "Date"
+                        }
+                    },
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                }) }}
+                {# Time #}
+                {{ govukInput({
+                    label: {
+                        text: "Time"
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[claim_time]",
+                    hint:{
+                        text: 'For example, 00:40'
+                        }
+                }) }}
+                {# Hourly rate #}
+                {{ govukInput({
+                    label: {
+                        text: "Cost of hourly rate"
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[hourly_rate]",
+                    hint:{
+                        text: 'For example, £68.87'
+                        }
+                }) }}
+                {# Basic claim #}
+                {{ govukInput({
+                    label: {
+                        text: "Cost of basic claim"
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[basic_claim]",
+                    hint:{
+                        text: 'For example, £68.87'
+                        }
+                }) }}
+                {# Claim #}
+                {{ govukInput({
+                    label: {
+                        text: "Cost of claim"
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[cost_of_claim]",
+                    hint:{
+                        text: 'For example, £500'
+                        }
+                }) }}
+                {# Uplift percentage #}
+                {{ govukInput({
+                    label: {
+                        text: "Uplift claim percentage "
+                    },
+                    classes: "govuk-input--width-5",
+                    name: "claim_items[uplift_percentage]",
+                    hint:{
+                        text: 'For example, 100%'
+                        }
+                }) }}
+
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

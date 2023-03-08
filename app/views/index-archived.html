@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page template –
+  {{ serviceName }}
+  – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/">Home</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['password'] != systemPassword) and (data['password']) %}
+        {{data['password']}}
+
+        {% set hasError = true %}
+      {% else %}
+        {% set hasError = false %}
+      {% endif %}
+
+      {% if hasError %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Enter a valid password",
+              href: "#password"
+            }
+          ]
+        })
+      }}
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">
+        {% if serviceName %}
+          {{ serviceName }}
+        {% endif %}
+      </h1>
+
+      <p>Use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Report crime lower work to the Legal Aid Agency.</li>
+        <li>update your name, address or other details</li>
+        <li>do something else</li>
+      </ul>
+
+      <p>Registering takes around 5 minutes.</p>
+      <form class="form" action="/verify-password" method="post">
+
+        <div class="govuk-form-group {{ 'govuk-form-group--error' if hasError }}">
+          <label class="govuk-label--m" for="password">
+            Enter password
+          </label>
+          <div id="password-hint" class="govuk-hint">
+            This service is a High level prototype for Non-Standard Magistrate Fee. If you need access please contact CRM7 Alpha Team.
+          </div>
+          {% if hasError %}
+            <p id="password-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>
+              Enter a valid password
+            </p>
+          {% endif %}
+          <input class="govuk-input {{ 'govuk-input--error' if hasError }}" id="password" name="password" type="password" aria-describedby="password-hint {{ 'password-error' if hasError }}">
+        </div>
+        <button draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
+          Start now
+          <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+          </svg>
+        </button>
+      </form>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p>You can also
+        <a href="#">register by post</a>.</p>
+
+      <p>The online service is also
+        <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.</p>
+
+      <p>You can’t register for this service if you’re in the UK illegally.</p>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More
+                <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}

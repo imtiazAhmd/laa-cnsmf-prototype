@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <span class="govuk-caption-l">Work items</span>
+            <h1 class="govuk-heading-l">Claim details</h1>
+            <p class="govuk-body-l">Where applicable, give the approximate number of pages
+            </p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <form class="form" action="work_item_lists" method="post">
+                {% set totalRunningTimeofTapedEvidence %}
+                <div>
+                    {{ govukInput({
+                    label: {
+                        text: "Hours"
+                    },
+                    classes: "govuk-!-width-one-third",
+                    id: "total_running_timeof_taped_evidence_hours",
+                    name: "claim_details[total_running_timeof_taped_evidence_hours]"
+                }) }}
+                    {{ govukInput({
+                    label: {
+                        text: "Minutes"
+                    },
+                    classes: "govuk-!-width-one-third",
+                    id: "total_running_timeof_taped_evidence_minutes",
+                    name: "claim_details[total_running_timeof_taped_evidence_minutes]"
+                }) }}
+                </div>
+
+                {% endset -%}
+                {# Prosecution evidence #}
+                {{ govukInput({
+                    label: {
+                        text: "Prosecution evidence"
+                    },
+                    classes: "govuk-!-width-one-third",
+                    id: "prosecution_evidence",
+                    name: "claim_details[prosecution_evidence]"
+                }) }}
+                {# Defence statement #}
+                {{ govukInput({
+                    label: {
+                        text: "Defence statement"
+                    },
+                    classes: "govuk-!-width-one-third",
+                    id: "defence_statement",
+                    name: "claim_details[defence_statement]",
+                    hint: {
+                        text: "For example the total number of pages of defence evidence including any statements by the defendant and defence witnesses"
+                    }
+                }) }}
+                {# Number of Defence witnesses #}
+                {{ govukInput({
+                    label: {
+                        text: "Number of Defence witnesses"
+                    },
+                    classes: "govuk-!-width-one-third",
+                    id: "number_of_defence_witnesses",
+                    name: "claim_details[number_of_defence_witnesses]"
+                }) }}
+                {# Supplemental claim #}
+                {{ govukRadios({
+                    name: "claim_details[supplemental_claim]",
+                    fieldset: {
+                        legend: {
+                        text: "Does this bill represent supplemental claim?"
+                        }
+                    },
+                    items: [
+                        {
+                        value: true,
+                        text: "Yes",
+                        hint: {
+                        text: "If yes, attach a copy of the previous claim "
+                        }
+                        },
+                        {
+                        value: false,
+                        text: "No"
+                        }
+                    ]
+                }) }}
+                {# Taped evidence #}
+                {{ govukRadios({
+                    name: "claim_details[time_spent_on_taped_evidence]",
+                    fieldset: {
+                        legend: {
+                        text: "Was any preperation time spent watching or listening to taped evidence?"
+                        }
+                    },
+                    items: [
+                        {
+                        value: true,
+                        text: "Yes",
+                        hint: {
+                        text: "If yes, tell us the total running time of the tape, in hours:minutes"
+                        },
+                        conditional: {
+                            html: totalRunningTimeofTapedEvidence
+                        }
+                        },
+                        {
+                        value: false,
+                        text: "No"
+                        }
+                    ]
+                }) }}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

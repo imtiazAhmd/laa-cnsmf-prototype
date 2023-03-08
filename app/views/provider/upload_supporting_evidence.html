@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Upload supporting evidence</h1>
+            <div class="govuk-!-margin-bottom-7">
+                <p class="govuk-body">Upload evidence to support your claim</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>File notes</li>
+                    <li>Attendance notes</li>
+                    <li>Reading case law</li>
+                    <li>Reading case law</li>
+                    <li>Documentation</li>
+                    <li>Prosecution evidence review</li>
+                    <li>Emails</li>
+                </ul>
+            </div>
+            <form class="form" action="check_your_answers" method="post">
+                <div class="moj-multi-file-upload">
+
+                    <div class="moj-multi-file-upload__upload">
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m" for="documents">
+                                Upload files
+                            </label>
+                            <div class="govuk-hint">The maximum file size is 7MB.Files must be a DOC, DOCX, RTF, ODT, JPG, BMP, PNG, TIF or PDF.</div>
+                            <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+                        </div>
+
+                        <button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                            Upload file
+                        </button>
+
+                    </div>
+
+                    <div class="moj-multi-file__uploaded-files hidden">
+                        <h2 class="govuk-heading-m">Uploaded files</h2>
+                        <div class="govuk-summary-list moj-multi-file-upload__list"></div>
+                    </div>
+                </div>
+                <button class="govuk-button" data-module="govuk-button">Check your answers</button>
+            </form>
+        </div>
+    </div>
+    {% endblock%}

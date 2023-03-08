@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Non-standard fee contract work assessment form</h1>
+
+            <p class="govuk-body">Use this service to claim for non-standard magistrate fees.</p>
+
+            <h2 class="govuk-heading-m">Before you start</h2>
+            <p class="govuk-body">You can only use this service to apply for an ongoing case where your client:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+                <li>does not have a partner</li>
+                <li>has a National Insurance number</li>
+                <li>receives a passporting benefit, including Universal Credit</li>
+            </ul>
+            <!--Not sure if Welsh is needed for provider service -->
+            <div class="govuk-inset-text">
+                <p>This guide is also available
+                    <a href="">in Welsh (Cymraeg)</a>.</p>
+            </div>
+            <a href="dashboard" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                Start now
+                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+                </svg>
+            </a>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+            <aside class="app-related-items" role="complementary">
+                <h2 class="govuk-heading-m" id="subsection-title">
+                    Related content
+                </h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                    <ul class="govuk-list govuk-!-font-size-16">
+                        <li>
+                            <a href="https://www.gov.uk/legal-aid">
+                                Legal aid
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="govuk-!-font-weight-bold">
+                                More
+                                <span class="govuk-visually-hidden">in Subsection</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+        </div>
+    </div>
+
+{% endblock %}
