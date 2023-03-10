@@ -3,20 +3,6 @@ const { systemPassword } = require('./config')
 const fetch = require('./data/fetch')
 const router = express.Router()
 
-// Run this code when a form is submitted to 'juggling-balls-answer'
-router.post('/juggling-balls-answer', function (req, res) {
-  // Make a variable and give it the value from 'how-many-balls'
-  var howManyBalls = req.session.data['how-many-balls']
-  // Check whether the variable matches a condition
-  if (howManyBalls === '3 or more') {
-    // Send user to next page
-    res.redirect('/juggling-trick')
-  } else {
-    // Send user to ineligible page
-    res.redirect('/ineligible')
-  }
-})
-
 router.get('/provider/dashboard', async (req, res, next) => {
   // delete req.session.data
   try {
@@ -61,10 +47,11 @@ router.get('/provider/confirmation', async (req, res, next) => {
   console.log(data)
   res.render('provider/confirmation', { data })
 })
+// for password checking
 router.post('/verify-password', function (req, res) {
   let password = req.session.data['password']
   if (password === systemPassword) {
-    res.redirect('/juggling-balls')
+    res.redirect('/provider/dashboard')
   } else {
     // Do nothing
     req.session.resave = false
