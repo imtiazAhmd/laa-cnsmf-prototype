@@ -4,6 +4,89 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Disbursments</h1>
             <form class="form" action="relevant_case_info" method="post">
+                {# Cost of Travel #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="disbursments-cost-of-travel">
+                        Solicitor’s cost of travel
+                    </label>
+                    <div id="cost-of-travel-hint" class="govuk-hint">
+                        For example, £10.97
+                    </div>
+                    <input class="govuk-input govuk-input--width-5" id="disbursments-cost-of-travel" name="disbursments[cost_of_travel]" type="number">
+                </div>
+                {# VAT on Travel #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="disbursments-vat-on-travel">
+                        VAT on travel
+                    </label>
+                    <input class="govuk-input govuk-input--width-5" id="disbursments-vat-on-travel" name="disbursments[vat_on_travel]" type="number">
+                </div>
+                {# Disbursements subject to VAT #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="disbursments-subject-to-vat">
+                        Disbursements subject to VAT
+                    </label>
+                    <input class="govuk-input govuk-input--width-5" id="disbursments-subject-to-vat" name="disbursments[subject_to_vat]" type="number">
+                </div>
+                {# VAT amount #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="disbursments-vat-amount">
+                        VAT amount
+                    </label>
+                    <input class="govuk-input govuk-input--width-5" id="disbursments-vat-amount" name="disbursments[vat_amount]" type="number">
+                </div>
+                {# Disbursements not subject to VAT #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="disbursments-not-subject-to-vat">
+                        Disbursements not subject to VAT
+                    </label>
+                    <input class="govuk-input govuk-input--width-5" id="disbursments-not-subject-to-vat" name="disbursments[not_subject_to_vat]" type="number">
+                </div>
+                {# Total #}
+                <h2 class="govuk-heading-m">Total disbursements</h2>
+                <p class="govuk-body-l">£278.99</p>
+                {# Additional details #}
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper">
+                        <label class="govuk-label govuk-label" for="more-detail">
+                            Additional details
+                        </label>
+                    </h1>
+                    <div id="more-detail-hint" class="govuk-hint">
+                        For example, Rail Fare to Redbridge 14/09/21
+                    </div>
+                    <textarea class="govuk-textarea" id="more-detail" name="disbursments[more_detail]" rows="4" aria-describedby="more-detail-hint"></textarea>
+                </div>
+                {# Duplicate disbursment button #}
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Duplicate disbursement
+                </button>
+                {# Designated area decleration #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend">
+                            Is it a designated area?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disbursments-desginated-area-yes" name="disbursments[desginated_area]" type="radio" value="true">
+                                <label class="govuk-label govuk-radios__label" for="disbursments-desginated-area-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="disbursments-desginated-area-no" name="disbursments[desginated_area]" type="radio" value="false">
+                                <label class="govuk-label govuk-radios__label" for="disbursments-desginated-area-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Inset text #}
+                <div class="govuk-inset-text">
+                    The location of your office/the magistrates' court at which the work is carried out determines whether you claim the 'Designated Area Standard Fees' or the 'Undesignated Area Standard Fees' (as set out in the 2017 Standard Crime Contract).
+                </div>
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
             </form>
         </div>

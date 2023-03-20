@@ -5,7 +5,74 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Claim for costs</h1>
             <form class="form" action="disbursments" method="post">
-
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Letters written
+                        </h1>
+                    </legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-numbers-of-letter">
+                            Number of letters written
+                        </label>
+                        <input class="govuk-input govuk-input--width-5" id="claim-for-costs-numbers-of-letter" name="claim_for_costs[numbers_of_letters]" type="number">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-cost-of-letter">
+                            Cost of letters written
+                        </label>
+                        <div id="cost-of-letter-hint" class="govuk-hint">
+                            For example, £10.97
+                        </div>
+                        <input class="govuk-input govuk-input--width-5 disabled" value='5' id="claim-for-costs-cost-of-letter" name="claim_for_costs[cost_of_letter]" type="number">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-total-cost-of-letter">
+                            Total cost of letters written
+                        </label>
+                        <div id="total-cost-of-letter-hint" class="govuk-hint">
+                            For example, £10.97
+                        </div>
+                        <input class="govuk-input govuk-input--width-5 disabled" value='5' id="claim-for-costs-total-cost-of-letter" name="claim_for_costs[total_cost_of_letter]" type="number">
+                    </div>
+                </fieldset>
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                            Telephone calls
+                        </h1>
+                    </legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-numbers-of-calls">
+                            Number of telephone calls
+                        </label>
+                        <input class="govuk-input govuk-input--width-5" id="claim-for-costs-numbers-of-calls" name="claim_for_costs[numbers_of_calls]" type="number">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-cost-of-calls">
+                            Cost of telephone calls
+                        </label>
+                        <div id="cost-of-calls-hint" class="govuk-hint">
+                            For example, £10.97
+                        </div>
+                        <input class="govuk-input govuk-input--width-5 disabled" value='5' id="claim-for-costs-cost-of-calls" name="claim_for_costs[cost_of_calls]" type="number">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-total-cost-of-calls">
+                            Total costs of telephone calls
+                        </label>
+                        <div id="total-cost-of-calls-hint" class="govuk-hint">
+                            For example, £10.97
+                        </div>
+                        <input class="govuk-input govuk-input--width-5 disabled" value='5' id="claim-for-costs-total-cost-of-calls" name="claim_for_costs[total_cost_of_calls]" type="number">
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="claim-for-costs-solicitor-core-cost">
+                            Solicitor’s core costs
+                        </label>
+                        <input class="govuk-input govuk-input--width-5" id="claim-for-costs-solicitor-core-cost" name="claim_for_costs[solicitor_core_cost]" type="number">
+                    </div>
+                </fieldset>
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
             </form>
         </div>
