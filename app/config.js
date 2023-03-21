@@ -4,7 +4,7 @@
 
 module.exports = {
   // Service name used in header. Eg: 'Renew your passport'
-  serviceName: 'Non Standard Magistrate Fee',
+  serviceName: 'Claim a non-standard magistrate fee',
 
   // Default port that prototype runs on
   port: '3000',
@@ -32,7 +32,7 @@ module.exports = {
   systemPassword: '12345',
 
   // App title
-  appTitle: 'Non Standard Magistrate Fees',
+  appTitle: 'Claim a non-standard magistrate fee',
 
   // Prototype Notice
   prototypeNotice:

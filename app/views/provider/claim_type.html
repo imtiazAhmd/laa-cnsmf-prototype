@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">What are you claiming ?</h1>
+            <form class="form" action="firm_details" method="post">
+                {% set nonStandardHTML %}
+                {{ govukDateInput({
+                    id: "claim-type-nsmf-date",
+                    namePrefix: "claim_type[nsmf_date]",
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                    }) }}
+                {% endset -%}
+
+                {% set breachOfInjunctionHTML %}
+                {{ govukInput({
+                    id: "claim-type-breach-of-injunction-cntp-number",
+                    name: "claim_type[cntp_number]",
+                    classes: "govuk-!-width-one-third",
+                    label: {
+                        text: "CNTP number"
+                    }
+                    }) }}
+                {{ govukDateInput({
+                    id: "claim-type-breach-of-injunction-cntp-date",
+                    namePrefix: "claim_type[cntp_date]",
+                    hint: {
+                        text: "For example, 27 3 2007"
+                    }
+                    }) }}
+                {% endset -%}
+
+                {% set otherHtml %}
+                <p>This form can only be used to claim for a Non-standard magistrate or a Breach for injunction payment.</p>
+                <p>To claim for a Crime Lower standard payment, please use CWA via the LAA online portal.</p>
+                <p>To claim for a Crime Higher payment, please use CCCD via the CCCD portal.</p>
+                {% endset -%}
+
+                {{ govukRadios({
+                    name: "claim_type[selected]",
+                    items: [
+                        {
+                        value: "non standard magistrates fee",
+                        text: "Non-standard magistrates fee",
+                        conditional: {
+                            html: nonStandardHTML
+                        }
+                        },
+                        {
+                        value: "breach of injunction",
+                        text: "Breach of injunction",
+                        conditional: {
+                            html: breachOfInjunctionHTML
+                        }
+                        },
+                        {
+                        value: "other",
+                        text: "Something else",
+                        conditional: {
+                            html: otherHtml
+                        }
+                        }
+                    ]
+                    }) }}
+                <button class="govuk-button" data-module="govuk-button" id='claim_type_continue'>Save and continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
