@@ -5,10 +5,10 @@
         <div class="govuk-grid-column-one-thirds">
             <h1 class="govuk-heading-l">Case disposal</h1>
 
-            <form class="form" action="reason_for_claim" method="post">
+            <form class="form" action="case_details" method="post">
                 {% set dateOfIssue %}
                 {{ govukDateInput({
-                    id: "case_deisposal-date_of_issue",
+                    id: "case_disposal-date-of-issue",
                     namePrefix: "case_disposal[date_of_issue]",
                     fieldset: {
                         legend: {
@@ -22,7 +22,7 @@
                 {% endset -%}
                 {% set dateOfCrackedTrial %}
                 {{ govukDateInput({
-                    id: "case_disposal-date_of_cracked_trial",
+                    id: "case-disposal-date-of-cracked-trial",
                     namePrefix: "case_disposal[date_of_cracked_trial]",
                     fieldset: {
                         legend: {
@@ -49,31 +49,31 @@
                     },
                     items: [
                         {
-                        value: "guilty_plea",
+                        value: "guilty plea",
                         text: "Guilty plea"
                         },
                         {
-                        value: "uncontested_breach",
+                        value: "uncontested breach",
                         text: "Uncontested breach"
                         },
                         {
-                        value: "discontinuance_or_withdrawal",
+                        value: "discontinuance or withdrawal",
                         text: "Discontinuance or withdrawal"
                         },
                         {
-                        value: "bind_over",
+                        value: "bind over",
                         text: "Bind over"
                         },
                         {
-                        value: "deffered_sentence_hearing",
+                        value: "deffered sentence hearing",
                         text: "Deffered sentence hearing"
                         },
                         {
-                        value: "change_of_solicitor",
+                        value: "change of solicitor",
                         text: "Change of solicitor"
                         },
                         {
-                        value: "warrant_of_arrest",
+                        value: "warrant of arrest",
                         text: "Warrent of arrest",
                         conditional: {
                             html: dateOfIssue
@@ -85,7 +85,7 @@
                 {# Category 2 #}
 
                 {{ govukCheckboxes({
-                    name: "category_2",
+                    name: "case_disposal[category_2]",
                     fieldset: {
                         legend: {
                         text: "Category 2",
@@ -98,26 +98,26 @@
                     },
                     items: [
                         {
-                        value: "no_guilty_plea",
+                        value: "no guilty plea",
                         text: "No guilty plea"
                         },
                         {
-                        value: "cracked_trial",
+                        value: "cracked trial",
                         text: "Cracked trial",
                         conditional: {
                             html: dateOfCrackedTrial
                         }
                         },
                         {
-                        value: "contested_breach",
+                        value: "contested breach",
                         text: "Contested breach"
                         },
                         {
-                        value: "discontinuance_or_withdrawal_or_bind_over_or_no_evidence_offered_after_case_fully_prepared",
+                        value: "discontinuance or withdrawal or bind over or no evidence offered after case fully prepared",
                         text: "Discontinuance or withdrawal or bind over or no evidence offered after case fully prepared"
                         },
                         {
-                        value: "mixed_plea",
+                        value: "mixed plea",
                         text: "Mixed plea"
                         }
                     ]

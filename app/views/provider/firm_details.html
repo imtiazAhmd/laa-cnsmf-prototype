@@ -3,110 +3,119 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Solicitor details</h1>
-            <form class="form" action="/provider/case_details" method="post">
+            <h1 class="govuk-heading-l">Firm details</h1>
+            <form class="form" action="reason_for_claim" method="post">
                 {% call govukFieldset({}) %}
-                {# Full Name #}
                 {{ govukInput({
-                label: {
-                    text: "Solicitor full name"
-                },
-                classes: "govuk-input--width-20",
-                hint: {
-                    text: "Or fellow of the institute of legal executives instructed"
-                },
-                id: "solicitor_fullname",
-                name: "solicitor_fullname",
-                value: data['solicitor_fullname']
-                }) }}
-                {# Reference #}
+                    label: {
+                        text: "Firm name"
+                    },
+                    classes: "govuk-input--width-20",
+                    id: "firm-details-firm-name",
+                    name: "firm_details[firm_name]"
+                    }) }}
                 {{ govukInput({
-                label: {
-                    text: "Solicitor reference"
-                },
-                classes: "govuk-input--width-20",
-                id: "solicitor_reference",
-                name: "solicitor_reference"
-                }) }}
-                {# Telephone #}
-                {{ govukInput({
-                label: {
-                    text: "Telephone number"
-                },
-                classes: "govuk-input--width-20",
-                id: "solicitor_tel",
-                name: "solicitor_tel"
-                }) }}
-                {# Email #}
-                {{ govukInput({
-                label: {
-                    text: "Email address"
-                },
-                classes: "govuk-input--width-20",
-                id: "solicitor_email",
-                name: "solicitor_email"
-                }) }}
-                {% endcall %}
-                {# Address #}
-                {% call govukFieldset({
-                    legend: {
-                        text: "Address",
-                        classes: "govuk-fieldset__legend--m",
-                        isPageHeading: true
-                    }
-                    }) %}
+                    label: {
+                        text: "Firm account number"
+                    },
+                    classes: "govuk-input--width-20",
+                    id: "firm-details-firm-account",
+                    name: "firm_details[account_number]"
+                    }) }}
                 {{ govukInput({
                         label: {
                         text: 'Address line 1'
                         },
-                        id: "address_line1",
-                        name: "address_line1",
-                        autocomplete: "address-line1"
+                        classes: 'govuk-input--width-20',
+                        id: "firm-details-address-line-1",
+                        name: "firm_details[address_line_1]"
+                    }) }}
+                {{ govukInput({
+                        label: {
+                        text: 'Address line 2'
+                        },
+                        classes: 'govuk-input--width-20',
+                        id: "firm-details-address-line-2",
+                        name: "firm_details[address_line_2]"
                     }) }}
                 {{ govukInput({
                         label: {
                         text: "Town or city"
                         },
                         classes: "govuk-!-width-two-thirds",
-                        id: "address_town",
-                        name: "address_town",
-                        autocomplete: "address-level2"
+                        id: "firm-details-town",
+                        name: "firm_details[town]"
                     }) }}
                 {{ govukInput({
                         label: {
                         text: "Postcode"
                         },
                         classes: "govuk-input--width-10",
-                        id: "address_postcode",
-                        name: "address_postcode",
-                        autocomplete: "postal-code"
+                        id: "firm-details-postcode",
+                        name: "firm_details[postcode]"
                     }) }}
                 {% endcall %}
-                {{ govukRadios({
-                    classes: "govuk-radios--inline",
-                    name: "reporder_attachment_choice",
-                    id: "reporder_attachment-_hoice",
-                    fieldset: {
-                        legend: {
-                        text: "Attach representation order",
-                        isPageHeading: true,
-                        classes: "govuk-fieldset__legend--m"
-                        }
+                {% call govukFieldset({
+                    legend: {
+                        text: "Solicitor details",
+                        classes: "govuk-fieldset__legend--m",
+                        isPageHeading: true
+                    }
+                }) %}
+                {# First Name #}
+                {{ govukInput({
+                    label: {
+                        text: "Solicitor first name"
                     },
-                    hint: {
-                        text: "How will you attach your representation order"
+                    classes: "govuk-input--width-20",
+                    id: "firm-details-solicitor-fullname",
+                    name: "firm_details[solicitor_firstName]"
+                    }) }}
+                {# Last Name #}
+                {{ govukInput({
+                    label: {
+                        text: "Solicitor surname"
                     },
-                    items: [
-                        {
-                        value: "document_exchange",
-                        text: "Document Exchange"
-                        },
-                        {
-                        value: "post",
-                        text: "Post"
-                        }
-                    ]
-                }) }}
+                    classes: "govuk-input--width-20",
+                    id: "firm-details-solicitor-surname",
+                    name: "firm_details[solicitor_surName]"
+                    }) }}
+                {# Reference #}
+                {{ govukInput({
+                    label: {
+                        text: "Solicitor reference number"
+                    },
+                    classes: "govuk-input--width-10",
+                    id: "firm-details-solicitor-reference",
+                    name: "firm_details[solicitor_reference]"
+                    }) }}
+                {% endcall %}
+                {% call govukFieldset({
+                    legend: {
+                        text: "Contact details",
+                        classes: "govuk-fieldset__legend--m",
+                        isPageHeading: true
+                    }
+                }) %}
+                {# Contact name #}
+                {{ govukInput({
+                    label: {
+                        text: "Contact name"
+                    },
+                    classes: "govuk-input--width-20",
+                    id: "firm-details-contact-name",
+                    name: "firm_details[contact_name]"
+                    }) }}
+                {# Telephone #}
+                {{ govukInput({
+                    label: {
+                        text: "Telephone number"
+                    },
+                    classes: "govuk-input--width-10",
+                    id: "firm-details-contact-tel",
+                    name: "firm_details[contact_tel]"
+                    }) }}
+                {% endcall %}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
 
             </form>

@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Hearing details</h1>
+            <form class="form" action="defendant_details" method="post">
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                        <legend class="govuk-fieldset__legend">
+                            When was the first hearing?
+                        </legend>
+                        <div id="hearing-details-date-hint" class="govuk-hint">
+                        For example, 27 3 2007
+                        </div>
+                        <div class="govuk-date-input" id="hearing-details-date">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="hearing-details-first-hearing-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hearing-details-first-hearing-day" name="hearing_details[first_hearing_date]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="hearing-details-first-hearing-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hearing-details-first-hearing-month" name="hearing_details[first_hearing_date]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="hearing-details-first-hearing-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hearing-details-first-hearing-year" name="hearing_details[first_hearing_date]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Number of court hearing #}
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper">
+                        <label class="govuk-label" for="hearing-details-number-of-court-hearing">
+                            How many court hearings were there for this case?
+                        </label>
+                    </h1>
+                    <div id="hearing-details-number-of-court-hearing-hint" class="govuk-hint">
+                        For example, 3
+                    </div>
+                    <input class="govuk-input govuk-input--width-10" id="hearing-details-number-of-court-hearing" name="hearing_details[number_of_court_hearing]" type="text" spellcheck="false" aria-describedby="hearing-details-number-of-court-hearing-hint" inputmode="numeric">
+                </div>
+
+                <div class="govuk-form-group">
+
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="hearing-details-youth-court" name="hearing_details[is_youth_court]" type="checkbox" value="true">
+                            <label class="govuk-label govuk-checkboxes__label" for="hearing-details-youth-court">
+                                Was the case dealt at a youth court?
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="hearing-details-within-designated-area" name="hearing_details[within_designated_area]" type="checkbox" value="true">
+                            <label class="govuk-label govuk-checkboxes__label" for="hearing-details-within-designated-area">
+                                Is the Magistrates court in a designated area of your firm?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="hearing-details-outcome-of-hearing">
+                        What was the outcome of the hearing?
+                    </label>
+                    <input class="govuk-input govuk-input--width-10" id="hearing-details-outcome-of-hearing" name="hearing_details[outcome_of_hearing]" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="hearing-details-matter-type">
+                        What was the matter type?
+                    </label>
+                    <input class="govuk-input govuk-input--width-10" id="hearing-details-matter-type" name="hearing_details[matter_type]" type="text">
+                </div>
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

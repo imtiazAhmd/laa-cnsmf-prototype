@@ -5,11 +5,11 @@
         <div class="govuk-grid-column-one-thirds">
             <h1 class="govuk-heading-l">Why are you claiming a non standard fee claim</h1>
 
-            <form class="form" action="claim_details" method="post">
+            <form class="form" action="case_disposal" method="post">
                 {% set repOrderDateWithdrawnOn %}
                 {{ govukDateInput({
-                    id: "rep_order_date_withdrawn_on",
-                    namePrefix: "rep_order_date_withdrawn_on",
+                    id: "reason-for-claim-rep-order-date-withdrawn-on",
+                    namePrefix: "reason_for_claim[rep_order_date_withdrawn_on]",
                     hint: {
                         text: "For example, 27 3 2007"
                     }
@@ -18,18 +18,15 @@
 
                 {% set otherReasonForClaiming %}
                 {{ govukInput({
-                    id: "other_reason_for_claiming",
-                    name: "other_reason_for_claiming",
+                    id: "reason-for-claim-other",
+                    name: "reason_for_claim[other_reason]",
                     type: "text",
-                    classes: "govuk-!-width-one-third",
-                    label: {
-                        text: ""
-                    }
+                    classes: "govuk-!-width-one-third"
                     }) }}
                 {% endset -%}
                 {# Choice of reasons #}
                 {{ govukCheckboxes({
-                    name: "reason_for_claim[]",
+                    name: "reason_for_claim[value]",
                     fieldset: {
                         legend: {
                         text: "Tick the boxes that apply",
@@ -42,19 +39,19 @@
                     },
                     items: [
                         {
-                        value: "guilty_plea",
+                        value: "guilty plea",
                         text: "Core costs exceed higher limit"
                         },
                         {
-                        value: "uncontested_breach",
+                        value: "uncontested breach",
                         text: "Enhanced rates claimed"
                         },
                         {
-                        value: "discontinuance_or_withdrawal",
+                        value: "discontinuance or withdrawal",
                         text: "Councel or agent assigned"
                         },
                         {
-                        value: "warrant_of_arrest",
+                        value: "warrant of arrest",
                         text: "Representation order withdrawn on",
                         conditional: {
                             html: repOrderDateWithdrawnOn}
@@ -64,7 +61,7 @@
                         text: "Extradition"
                         },
                         {
-                        value: "discontinuance_or_withdrawal",
+                        value: "discontinuance or withdrawal",
                         text: "Other, give details",
                         conditional: {
                             html: otherReasonForClaiming}

@@ -33,6 +33,15 @@ router.get('/provider/dashboard', async (req, res, next) => {
   }
 })
 
+router.get('/logout', async (req, res, next) => {
+  req.session.destroy()
+})
+// For debug ONLY
+router.get('/data', async (req, res, next) => {
+  let data = req.session.data
+  console.log('---------------DATA--------------')
+  console.log(data)
+})
 router.get('/provider/claim_items', async (req, res, next) => {
   let data = req.session.data
   res.render('provider/claim_items', { data })
