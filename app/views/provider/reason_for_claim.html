@@ -2,10 +2,10 @@
 
 {% block content %}
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-thirds">
-            <h1 class="govuk-heading-l">Why are you claiming a non standard fee claim</h1>
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Why are you claiming a non-standard magistrate fee?</h1>
 
-            <form class="form" action="case_disposal" method="post">
+            <form class="form" action="case_details" method="post">
                 {% set repOrderDateWithdrawnOn %}
                 {{ govukDateInput({
                     id: "reason-for-claim-rep-order-date-withdrawn-on",
@@ -17,11 +17,10 @@
                 {% endset -%}
 
                 {% set otherReasonForClaiming %}
-                {{ govukInput({
+                {{ govukTextarea({
                     id: "reason-for-claim-other",
                     name: "reason_for_claim[other_reason]",
-                    type: "text",
-                    classes: "govuk-!-width-one-third"
+                    hint: { text: 'Provide details'}
                     }) }}
                 {% endset -%}
                 {# Choice of reasons #}
@@ -62,7 +61,7 @@
                         },
                         {
                         value: "discontinuance or withdrawal",
-                        text: "Other, give details",
+                        text: "Other",
                         conditional: {
                             html: otherReasonForClaiming}
                         }

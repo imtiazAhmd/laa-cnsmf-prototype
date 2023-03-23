@@ -100,9 +100,9 @@
                 {# Contact name #}
                 {{ govukInput({
                     label: {
-                        text: "Contact name"
+                        text: "Contact full name"
                     },
-                    classes: "govuk-input--width-20",
+                    classes: "govuk-input--width-30",
                     id: "firm-details-contact-name",
                     name: "firm_details[contact_name]"
                     }) }}
@@ -113,7 +113,10 @@
                     },
                     classes: "govuk-input--width-10",
                     id: "firm-details-contact-tel",
-                    name: "firm_details[contact_tel]"
+                    name: "firm_details[contact_tel]",
+                    hint: {
+                        text: "For example, 01632 960 001 or +44 808 157 0192"
+                    }
                     }) }}
                 {% endcall %}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>

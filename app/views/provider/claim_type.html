@@ -9,6 +9,11 @@
                 {{ govukDateInput({
                     id: "claim-type-nsmf-date",
                     namePrefix: "claim_type[nsmf_date]",
+                    fieldset: {
+                        legend: {
+                        text: "Representation order date"
+                        }
+                    },
                     hint: {
                         text: "For example, 27 3 2007"
                     }
@@ -27,6 +32,11 @@
                 {{ govukDateInput({
                     id: "claim-type-breach-of-injunction-cntp-date",
                     namePrefix: "claim_type[cntp_date]",
+                    fieldset: {
+                        legend: {
+                        text: "CNTP date"
+                        }
+                    },
                     hint: {
                         text: "For example, 27 3 2007"
                     }

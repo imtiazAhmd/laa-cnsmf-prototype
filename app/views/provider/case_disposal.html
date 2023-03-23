@@ -2,10 +2,10 @@
 
 {% block content %}
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-thirds">
+        <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Case disposal</h1>
-
-            <form class="form" action="case_details" method="post">
+            <p class="govuk-body-l">Tick the boxes that apply. You can only tick boxes within one single category.</p>
+            <form class="form" action="hearing_details" method="post">
                 {% set dateOfIssue %}
                 {{ govukDateInput({
                     id: "case_disposal-date-of-issue",
@@ -43,9 +43,6 @@
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--m"
                         }
-                    },
-                    hint: {
-                        text: "Select all options that are relevant to you."
                     },
                     items: [
                         {
@@ -92,9 +89,6 @@
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--m"
                         }
-                    },
-                    hint: {
-                        text: "Select all options that are relevant to you."
                     },
                     items: [
                         {
