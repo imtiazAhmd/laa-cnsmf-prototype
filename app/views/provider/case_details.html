@@ -47,8 +47,8 @@
                         text: "There was an unassigned counsel"
                         },
                         {
-                        value: "there was an agent counsel",
-                        text: "There was an agent counsel"
+                        value: "there was an agent instructed",
+                        text: "There was an agent instructed"
                         },
                         {
                         value: "the case has been remitted",
@@ -57,58 +57,54 @@
                     ]
                 }) }}
                 <div id='crm8-upload-section' class='hidden'>
-                    {% set crm8FileUploadHtml %}
-                    {{ govukFileUpload({
-                        id: "case-details-crm8-file-upload",
-                        name: "case_details[crm8_form]",
-                        label: {
-                            text: "Upload a file"
-                        }
-                        }) }}
-                    {% endset %}
-                    {% set cmr8PostHtml %}
-                    <p>Post your paper evidence at:</p>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="crm8-hint">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h1 class="govuk-fieldset__heading">
+                                How will you be providing the <a class="govuk-link" href='https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/346635/legal-aid-crm8-assigned-counsel.pdf' target='_blank'>CRM8 form?</a>
+                            </h1>
+                            </legend>
+                            <div id="crm8-hint" class="govuk-hint">
+                            Select one option.
+                            </div>
+                            <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-send-crm8-via-upload" name="case_details[send_crm8_via]" type="radio" value="file upload" data-aria-controls="conditional-crm8-file-upload">
+                                <label class="govuk-label govuk-radios__label" for="case-details-send-crm8-via-upload">
+                                File upload
+                                </label>
+                            </div>
 
-                    <p>Northgate Public Services<br>
-                        26 Charles Way<br>
-                        Bulwell<br>
-                        Nottingham<br>
-                        NG6 8RF</p>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-crm8-file-upload">
+                                {{ govukFileUpload({
+                                    id: "case-details-crm8-file-upload",
+                                    name: "case_details[crm8_form]",
+                                    label: {
+                                        text: "Upload a file"
+                                    }
+                                    }) }}
+                            </div>
 
-                    <p>This may delay the times in assessing your claims</p>
-                    {% endset %}
-                    {% call govukFieldset({
-                        legend: {
-                            text: "How will you be providing the CRM8 form?",
-                            classes: "govuk-fieldset__legend--s",
-                            isPageHeading: true
-                        }
-                        }) %}
-                    {{ govukRadios({
-                        name: "case_details[send_crm8_via]",
-                        fieldset: {
-                            legend: {
-                            text: "You must provide a CRM8 form for every assigned counsel to this case."
-                            }
-                        },
-                        items: [
-                            {
-                            value: "file upload",
-                            text: "File upload",
-                            conditional: {
-                                html: crm8FileUploadHtml
-                            }
-                            },
-                            {
-                            value: "via post",
-                            text: "Via post",
-                            conditional: {
-                                html: cmr8PostHtml
-                            }
-                            }
-                        ]
-                        }) }}
-                    {% endcall %}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-send-crm8-via-post" name="case_details[send_crm8_via]" type="radio" value="via post" data-aria-controls="conditional-crm8-via-post">
+                                <label class="govuk-label govuk-radios__label" for="case-details-send-crm8-via-post">
+                                Via post
+                                </label>
+                            </div>
+
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-crm8-via-post">
+                                <p>Post your paper evidence at:</p>
+
+                                <p>Northgate Public Services<br>
+                                    26 Charles Way<br>
+                                    Bulwell<br>
+                                    Nottingham<br>
+                                    NG6 8RF</p>
+                            </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
                 </div>
                 <div id='case-remitted-section' class='hidden'>
                     {% set remittedFileUploadHtml %}
