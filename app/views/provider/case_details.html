@@ -5,15 +5,14 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Case details</h1>
             <form class="form" action="case_disposal" method="post">
-                {{ govukSelect({
-                    id: "case-details-main-offence",
-                    name: "case_details[main_offence]",
+                {{ govukInput({
                     label: {
                         text: "Main offence"
                     },
-                    classes: "govuk-!-width-two-thirds",
-                    items: offences
-                }) }}
+                    classes: "govuk-input--width-20",
+                    id: "case-details-main-offence",
+                    name: "case_details[main_offence]"
+                    }) }}
                 {{ govukDateInput({
                     id: "case-details-offence-commited",
                     namePrefix: "case_details[date_of_offence_commited]",

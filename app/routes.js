@@ -3,6 +3,11 @@ const { systemPassword } = require('./config')
 const fetch = require('./data/fetch')
 const router = express.Router()
 
+const formatDate = (date) => {
+  date = new Date(date);
+  return date.getDate() + '/' + (date.getMonth() + 1).toString().padStart(2, "0") + '/' + date.getFullYear();
+}
+
 router.get('/provider/dashboard', async (req, res, next) => {
   // delete req.session.data
   try {
@@ -16,8 +21,8 @@ router.get('/provider/dashboard', async (req, res, next) => {
           item.data.client_details.client.first_name +
           ' ' +
           item.data.client_details.client.last_name,
-        date: item.date,
-        reference: 'LAA-' + item.id.substring(1, 7),
+        date: formatDate(item.date),
+        reference: Math.random().toString().slice(2, 9),
         status: item.status,
         id: item.id,
         timestamp: item.date || 0,

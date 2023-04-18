@@ -40,31 +40,21 @@ module.exports = {
 
   // Sample data
   offenceData: [
-    { value: 'Murder/Manslaughter', text: 'Murder/Manslaughter' },
-    { value: 'Driving Offences', text: 'Driving Offences' },
-    { value: 'Burglary & Robbery', text: 'Burglary & Robbery' },
-    { value: 'Firearms Offences', text: 'Firearms Offences' },
-    {
-      value: 'Other offences against the person',
-      text: 'Other offences against the person',
-    },
-    {
-      value: 'Exploitation / human trafficking offences',
-      text: 'Exploitation / human trafficking offences',
-    },
-    { value: 'Public Order Offences', text: 'Public Order Offences' },
-    { value: 'Regulatory Offences', text: 'Regulatory Offences' },
-    { value: 'Standard Cases', text: 'Standard Cases' },
-    { value: 'Terrorism', text: 'Terrorism' },
-    { value: 'Serious Violence', text: 'Serious Violence' },
-    { value: 'Sexual Offences (children)', text: 'Sexual Offences (children)' },
-    { value: 'Sexual Offences (adult)', text: 'Sexual Offences (adult)' },
-    { value: 'Dishonesty', text: 'Dishonesty' },
-    { value: 'Property Damage Offences', text: 'Property Damage Offences' },
-    {
-      value: 'Offences Against the Public Interest',
-      text: 'Offences Against the Public Interest',
-    },
-    { value: 'Drugs Offences', text: 'Drugs Offences' },
+    { value: "Offences against the person", text: "Offences against the person" },
+    { value: "Homicide and related grave offences", text: "Homicide and related grave offences" },
+    { value: "Sexual offences and associated offences against children", text: "Sexual offences and associated offences against children" },
+    { value: "Robbery", text: "Robbery" },
+    { value: "Burglary", text: "Burglary" },
+    { value: "Criminal damage", text: "Criminal damage" },
+    { value: "Theft (including taking vehicle without consent)", text: "Theft (including taking vehicle without consent)" },
+    { value: "Fraud and forgery and other offences of dishonesty not otherwise categorised", text: "Fraud and forgery and other offences of dishonesty not otherwise categorised" },
+    { value: "Public order offences", text: "Public order offences" },
+    { value: "Drug offences", text: "Drug offences" },
+    { value: "Driving and motor vehicle offences (other than those covered by codes 1, 6 & 7)", text: "Driving and motor vehicle offences (other than those covered by codes 1, 6 & 7)" },
+    { value: "Other offences", text: "Other offences" },
+    { value: "Terrorism", text: "Terrorism" },
+    { value: "Anti-social behaviour orders (for applications made prior to 23rd March 2015)", text: "Anti-social behaviour orders (for applications made prior to 23rd March 2015)" },
+    { value: "Sexual offender orders", text: "Sexual offender orders" },
+    { value: "Other prescribed proceedings", text: "Other prescribed proceedings" }
   ],
 }
