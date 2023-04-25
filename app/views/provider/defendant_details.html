@@ -3,17 +3,120 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Defendant details</h1>
-            <form class="form" action="claim_details" method="post">
-                {% set html %}
-                <p class="govuk-notification-banner__heading">
-                        Awaiting design for this page.
-                    </p>
-                {% endset %}
-
-                {{ govukNotificationBanner({
-                    html: html
-                    }) }}
+            <h1 class="govuk-heading-l">Main defendant details</h1>
+            <form class="form" method="post">
+            {# Defendant's first name #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="main-defendant-first-name">
+                        Defendant first name
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="main-defendant-first-name" name="main_defendant[first_name]" type="text">
+                </div>
+                {# Defendant's last name #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="main-defendant-last-name">
+                        Defendant surname
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="main-defendant-last-name" name="main_defendant[last_name]" type="text">
+                </div>
+                {# MAAT number #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="main-defendant-maat-number">
+                        Defendant MAAT number
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="main-defendant-maat-number" name="main_defendant[maat_number]" type="text">
+                </div>
+                {# Ethnicity #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="main-defendant-ethnicity">
+                        Ethnicity of defendant
+                    </label>
+                    <select class="govuk-select" id="main-defendant-ethnicity" name="main_defendant[ethnicity]">
+                        <option value="asian">Asian</option>
+                        <option value="black" selected>Black</option>
+                        <option value="mixed">Mixed</option>
+                        <option value="white">White</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                {# Gender #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Gender of defendant
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-gender-female" name="main_defendant[gender]" type="radio" value="female">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-gender-female">
+                                Female
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-gender-male" name="main_defendant[gender]" type="radio" value="male">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-gender-male">
+                                Male
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-gender-other" name="main_defendant[gender]" type="radio" value="other">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-gender-other">
+                                Other, unknown, or prefer not to say
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Disability declaration #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Does the defendant consider themselves as having a disability?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-disability-yes" name="main_defendant[disability]" type="radio" value="true">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-disability-yes">
+                                Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-disability-no" name="main_defendant[disability]" type="radio" value="false">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-disability-no">
+                                No
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-disability-other" name="main_defendant[disability]" type="radio" value="other">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-disability-other">
+                                Other, unknown, or prefer not to say
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Additional defendants exists #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Were there other defendants represented in this case?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-additional-defendant-yes" name="main_defendant[additional_defendant]" type="radio" value="true">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-additional-defendant-yes">
+                                Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="main-defendant-additional-defendant-no" name="main_defendant[additional_defendant]" type="radio" value="false">
+                                <label class="govuk-label govuk-radios__label" for="main-defendant-additional-defendant-no">
+                                No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
 
             </form>
