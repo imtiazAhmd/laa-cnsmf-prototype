@@ -4,8 +4,51 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Other defendant details</h1>
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Defendant name</th>
+                    <th scope="col" class="govuk-table__header">MAAT number</th>
+                    <th scope="col" class="govuk-table__header">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">Vinne</td>
+                        <td class="govuk-table__cell">Hood</td>
+                        <td class="govuk-table__cell"><a href="#" class="govuk-link">Delete</a></td>
+                    </tr>
+                </tbody>
+                </table>
             <form class="form" action="case_details" method="post">
-                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                {# Defendant's first name #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="other-defendant-first-name">
+                        Defendant first name
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="other-defendant-first-name" name="other_defendant[first_name]" type="text">
+                </div>
+                {# Defendant's last name #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="other-defendant-last-name">
+                        Defendant surname
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="other-defendant-last-name" name="other_defendant[last_name]" type="text">
+                </div>
+                {# MAAT number #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="other-defendant-maat-number">
+                        Defendant MAAT number
+                    </label>
+                    <input class="govuk-input  govuk-input--width-10" id="other-defendant-maat-number" name="other_defendant[maat_number]" type="text">
+                </div>
+                <div class="govuk-button-group">
+                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id='other-defendant-add-defendant-button'>
+                        Add defendant
+                    </button>
+                    <input type='submit' class="govuk-button" data-module="govuk-button" value="Save and continue">
+                </div>
             </form>
         </div>
     </div>
