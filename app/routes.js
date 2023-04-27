@@ -2,6 +2,7 @@ const express = require('express')
 const { systemPassword } = require('./config')
 const fetch = require('./data/fetch')
 const router = express.Router()
+const sessionData = require('./data/session-data-defaults')
 const other_defendants_list = require('./data/other_defendants');
 
 const formatDate = (date) => {
@@ -48,6 +49,12 @@ router.get('/data', async (req, res, next) => {
   console.log('---------------DATA--------------')
   console.log(data)
 })
+
+router.get('/provider/firm_details', async (req, res, next) => {
+  let data = sessionData.firm_details[0]
+  res.render('provider/firm_details', { firmDetails: data })
+})
+
 router.get('/provider/claim_items', async (req, res, next) => {
   let data = req.session.data
   res.render('provider/claim_items', { data })
@@ -58,15 +65,15 @@ router.get('/provider/claim_summary', async (req, res, next) => {
   res.render('provider/claim_summary', { data })
 })
 
-router.post('/provider/defendant_details', async (req, res, next) => {
-  let additional_defendant_exists = req.session.data['main_defendant']['additional_defendant']
-  additional_defendant_exists === 'true' ? res.redirect('/provider/other_defendants') : res.redirect('/provider/claim_details')
-})
+// router.post('/provider/defendant_details', async (req, res, next) => {
+//   let additional_defendant_exists = req.session.data['main_defendant']['additional_defendant']
+//   additional_defendant_exists === 'true' ? res.redirect('/provider/other_defendants') : res.redirect('/provider/claim_details')
+// })
 
-router.get('/provider/other_defendants', async (req, res, next) => {
-  let data = req.session.data
-  res.render('provider/other_defendants', { other_defendants_list: other_defendants_list})
-})
+// router.get('/provider/other_defendants', async (req, res, next) => {
+//   let data = req.session.data
+//   res.render('provider/other_defendants', { other_defendants_list: other_defendants_list})
+// })
 
 router.get('/provider/confirmation', async (req, res, next) => {
   let data = req.session.data

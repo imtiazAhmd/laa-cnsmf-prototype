@@ -20,5 +20,8 @@ Example usage:
 module.exports = {
 
   // Insert values here
+  firm_details: [
+    {firm_name : "Test"}
+  ]
 
 }

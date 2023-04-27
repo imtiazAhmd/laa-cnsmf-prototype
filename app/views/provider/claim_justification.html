@@ -5,11 +5,11 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Why are you claiming a non-standard magistrate fee?</h1>
 
-            <form class="form" action="case_details" method="post">
+            <form class="form" action="claim_details" method="post">
                 {% set repOrderDateWithdrawnOn %}
                 {{ govukDateInput({
-                    id: "reason-for-claim-rep-order-date-withdrawn-on",
-                    namePrefix: "reason_for_claim[rep_order_date_withdrawn_on]",
+                    id: "claim-justification-rep-order-date-withdrawn-on",
+                    namePrefix: "claim_justification[rep_order_date_withdrawn_on]",
                     hint: {
                         text: "For example, 27 3 2007"
                     }
@@ -18,14 +18,14 @@
 
                 {% set otherReasonForClaiming %}
                 {{ govukTextarea({
-                    id: "reason-for-claim-other",
-                    name: "reason_for_claim[other_reason]",
+                    id: "claim-justification-other",
+                    name: "claim_justification[other_reason]",
                     hint: { text: 'Provide details'}
                     }) }}
                 {% endset -%}
                 {# Choice of reasons #}
                 {{ govukCheckboxes({
-                    name: "reason_for_claim[value]",
+                    name: "claim_justification[value]",
                     fieldset: {
                         legend: {
                         text: "Tick the boxes that apply",

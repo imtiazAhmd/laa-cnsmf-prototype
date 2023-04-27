@@ -1,0 +1,237 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Total costs</h1>
+            <form class="form" action="dashboard" method="post">
+                {# Claim status #}
+                <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-1">
+                    Claim incomplete
+                </p>
+                {# Step progression #}
+                <p class="govuk-body govuk-!-font-weight-regular">
+                    You have completed 1 of 14 sections.
+                </p>
+                {# Steps list start #}
+                <section class='govuk-!-margin-bottom-7'>
+                    <div class='govuk-!-margin-top-7'>
+                    {# About you #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">1. About you</h2>
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="firm_details">
+                                        Your details
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag">
+                                        completed
+                                    </strong>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                    {# About the case #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">2. About the case</h2>
+                        <dl class="govuk-summary-list">
+                            {# Case details #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="case_details">
+                                        Case details
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Case disposal #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="case_disposal">
+                                        Case disposal
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Hearing details #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="hearing_details">
+                                        Hearing details
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                    {# 3. About the defendant #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">3. About the defendant</h2>
+                        <dl class="govuk-summary-list">
+                            {# Defendant details #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="defendant_details">
+                                        Defendant details
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                    {# 4. About the claim #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">4. About the claim</h2>
+                        <dl class="govuk-summary-list">
+                            {# Claim justification #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="claim_justification">
+                                        Claim justification
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Claim details #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="claim_details">
+                                        Claim details
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Work items #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="work_item_lists">
+                                        Work items
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Letters and phone calls #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="letters_calls">
+                                        Letters and phone calls
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Disbursements costs #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="disbursments">
+                                        Disbursements costs
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                            {# Your claim summary #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    {# Conditional link if all of the steps in the section are completed #}
+                                        Your claim summary
+                                </dt>
+                            </div>
+                            {# Other relevant information #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="additional_info">
+                                        Other relevant information
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                    {# 5. Supporting evidence #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">5. Supporting evidence</h2>
+                        <dl class="govuk-summary-list">
+                            {# Upload supporting evidence #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    <a class="govuk-link" href="upload_evidence">
+                                        Upload supporting evidence
+                                    </a>
+                                </dt>
+                                <dd class="govuk-summary-list__actions">
+                                    <strong class="govuk-tag govuk-tag--grey">
+                                        not started
+                                    </strong>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                    {# 6. Review and confirm #}
+                        <h2 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-0">6. Review and confirm</h2>
+                        <dl class="govuk-summary-list">
+                            {# Check your answers #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    {# Conditional link if all of the steps in the section are completed #}
+                                        Check your answers
+                                </dt>
+                            </div>
+                            {# Confirm declaration #}
+                            <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key govuk-!-font-weight-regular">
+                                    {# Conditional link if all of the steps in the section are completed #}
+                                        Confirm declaration and submit claim
+                                </dt>
+                            </div>
+                        </dl>
+                    </div>
+                </section>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Back to your claims
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

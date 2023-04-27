@@ -4,16 +4,14 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">Firm details</h1>
-            <form class="form" action="reason_for_claim" method="post">
+            <form class="form" action="case_details" method="post">
                 {% call govukFieldset({}) %}
-                {{ govukInput({
-                    label: {
-                        text: "Firm name"
-                    },
-                    classes: "govuk-input--width-20",
-                    id: "firm-details-firm-name",
-                    name: "firm_details[firm_name]"
-                    }) }}
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="firm-details-firm-name">
+                        Firm name
+                    </label>
+                    <input class="govuk-input govuk-input--width-10" id="firm-details-firm-name" name="firm_details[firm_name]" type="text" value={{firmDetails.firm_name}}>
+                </div>
                 {{ govukInput({
                     label: {
                         text: "Firm account number"
