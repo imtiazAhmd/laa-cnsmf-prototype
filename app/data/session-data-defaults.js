@@ -21,7 +21,18 @@ module.exports = {
 
   // Insert values here
   firm_details: [
-    {firm_name : "Test"}
+    {
+      firm_name : "Seagull Ltd",
+      account_number: "12345678910",
+      address_line_1: 'Albany house',
+      address_line_2: "86 petty france",
+      town: "London",
+      postcode: "SW1H 9EA",
+      solicitor_name: "Zayn Malik",
+      solicitor_reference: "SS/69646",
+      contact_name: "Samantha Jane",
+      contact_email: "samantha.jane@seagull.co.uk"
+    }
   ]
 
 }

@@ -3,122 +3,105 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Firm details</h1>
-            <form class="form" action="case_details" method="post">
-                {% call govukFieldset({}) %}
-                <div class="govuk-form-group">
-                    <label class="govuk-label govuk-label--s" for="firm-details-firm-name">
-                        Enter your details
-                    </label>
-                    <input class="govuk-input govuk-input--width-10" id="firm-details-firm-name" name="firm_details[firm_name]" type="text" value={{firmDetails.firm_name}}>
-                </div>
-                {{ govukInput({
-                    label: {
-                        text: "Firm account number"
-                    },
-                    classes: "govuk-input--width-20",
-                    id: "firm-details-firm-account",
-                    name: "firm_details[account_number]"
-                    }) }}
-                {{ govukInput({
-                        label: {
-                        text: 'Address line 1'
-                        },
-                        classes: 'govuk-input--width-20',
-                        id: "firm-details-address-line-1",
-                        name: "firm_details[address_line_1]"
-                    }) }}
-                {{ govukInput({
-                        label: {
-                        text: 'Address line 2'
-                        },
-                        classes: 'govuk-input--width-20',
-                        id: "firm-details-address-line-2",
-                        name: "firm_details[address_line_2]"
-                    }) }}
-                {{ govukInput({
-                        label: {
-                        text: "Town or city"
-                        },
-                        classes: "govuk-input--width-10",
-                        id: "firm-details-town",
-                        name: "firm_details[town]"
-                    }) }}
-                {{ govukInput({
-                        label: {
-                        text: "Postcode"
-                        },
-                        classes: "govuk-input--width-10",
-                        id: "firm-details-postcode",
-                        name: "firm_details[postcode]"
-                    }) }}
-                {% endcall %}
-                {% call govukFieldset({
-                    legend: {
-                        text: "Solicitor details",
-                        classes: "govuk-fieldset__legend--m",
-                        isPageHeading: true
-                    }
-                }) %}
-                {# First Name #}
-                {{ govukInput({
-                    label: {
-                        text: "Solicitor first name"
-                    },
-                    classes: "govuk-input--width-20",
-                    id: "firm-details-solicitor-fullname",
-                    name: "firm_details[solicitor_firstName]"
-                    }) }}
-                {# Last Name #}
-                {{ govukInput({
-                    label: {
-                        text: "Solicitor surname"
-                    },
-                    classes: "govuk-input--width-20",
-                    id: "firm-details-solicitor-surname",
-                    name: "firm_details[solicitor_surName]"
-                    }) }}
+            <h1 class="govuk-heading-l">Enter your details</h1>
+            <form class="form" action="../case_details" method="post">
+            {# Firm Details #}
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                        Firm details</h2>
+                    </legend>
+                    {# Firm name #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-firm-name">
+                            Firm name
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-firm-name" name="firm_details[firm_name]" type="text" value="{{firmDetails['firm_name']}}">
+                    </div>
+                    {# Firm account number #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-firm-account">
+                            Firm account number
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-firm-account" name="firm_details[account_number]" type="text" value="{{firmDetails['account_number']}}">
+                    </div>
+                    {# Address line 1 #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-address-line-1">
+                            Address line 1
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-address-line-1" name="firm_details[address_line_1]" type="text" value="{{firmDetails['address_line_1']}}">
+                    </div>
+                    {# Address line 2 #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-address-line-2">
+                            Address line 2
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-address-line-2" name="firm_details[address_line_2]" type="text" value="{{ firmDetails['address_line_2'] }}">
+                    </div>
+                    {# Town or city #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-town">
+                            Town or city
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="firm-details-town" name="firm_details[town]" type="text" value="{{firmDetails['town']}}">
+                    </div>
+                    {# Postcode #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-postcode">
+                            Town or city
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="firm-details-postcode" name="firm_details[postcode]" type="text" value="{{firmDetails['postcode']}}">
+                    </div>
+                </fieldset>
+            {# Solicitor details #}
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                        Solicitor details</h2>
+                    </legend>
+                {# Full Name #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-solicitor-name">
+                            Solicitor full name
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-solicitor-name" name="firm_details[solicitor_name]" type="text" value="{{firmDetails['solicitor_name']}}">
+                    </div>
                 {# Reference #}
-                {{ govukInput({
-                    label: {
-                        text: "Solicitor reference number"
-                    },
-                    classes: "govuk-input--width-10",
-                    id: "firm-details-solicitor-reference",
-                    name: "firm_details[solicitor_reference]"
-                    }) }}
-                {% endcall %}
-                {% call govukFieldset({
-                    legend: {
-                        text: "Contact details",
-                        classes: "govuk-fieldset__legend--m",
-                        isPageHeading: true
-                    }
-                }) %}
-                {# Contact name #}
-                {{ govukInput({
-                    label: {
-                        text: "Contact full name"
-                    },
-                    classes: "govuk-input--width-30",
-                    id: "firm-details-contact-name",
-                    name: "firm_details[contact_name]"
-                    }) }}
-                {# Telephone #}
-                {{ govukInput({
-                    label: {
-                        text: "Telephone number"
-                    },
-                    classes: "govuk-input--width-10",
-                    id: "firm-details-contact-tel",
-                    name: "firm_details[contact_tel]",
-                    hint: {
-                        text: "For example, 01632 960 001 or +44 808 157 0192"
-                    }
-                    }) }}
-                {% endcall %}
-                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-solicitor-referenc">
+                            Solicitor reference number
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-solicitor-referenc" name="firm_details[solicitor_reference]" type="text" value="{{firmDetails['solicitor_reference']}}">
+                    </div>
+                </fieldset>
 
+            {# Your contact details #}
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                        Your contact details</h2>
+                    </legend>
+                {# Contact Name #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-contact-name">
+                            Your full name
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-contact-name" name="firm_details[contact_name]" type="text" value="{{firmDetails['contact_name']}}">
+                    </div>
+                {# Email #}
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="firm-details-contact-email">
+                            Email address
+                        </label>
+                        <div id="authentication-code-hint" class="govuk-hint">
+                            For example,your_name@email.com
+                        </div>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-contact-email" name="firm_details[contact_email]" type="text" value="{{firmDetails['contact_email']}}">
+                    </div>
+                </fieldset>
+                {# Submit button #}
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
         </div>
     </div>

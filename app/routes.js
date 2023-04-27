@@ -50,9 +50,13 @@ router.get('/data', async (req, res, next) => {
   console.log(data)
 })
 
-router.get('/provider/firm_details', async (req, res, next) => {
-  let data = sessionData.firm_details[0]
-  res.render('provider/firm_details', { firmDetails: data })
+router.get('/provider/start_claim/:status', async (req, res, next) => {
+  req.params.status === 'completed' ? res.render('provider/start_claim', { status: 'completed' }) : res.render('provider/start_claim', { status: 'new' })
+})
+
+router.get('/provider/firm_details/:status', async (req, res, next) => {
+  let data = sessionData['firm_details'][0]
+  req.params.status === 'completed' ? res.render('provider/firm_details', { firmDetails: data }) : res.render('provider/firm_details')
 })
 
 router.get('/provider/claim_items', async (req, res, next) => {
