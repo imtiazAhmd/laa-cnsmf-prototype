@@ -84,7 +84,6 @@ app.locals.releaseVersion = 'v' + releaseVersion
 app.locals.serviceName = config.serviceName
 app.locals.appTitle = config.appTitle
 app.locals.prototypeNotice = config.prototypeNotice
-app.locals.offences = config.offenceData
 app.locals.testData = [
   {
     date: 2222,
@@ -113,86 +112,6 @@ app.locals.testData = [
     preperation: 20,
     advocacy: 6,
   },
-]
-app.locals.sampleCourtData = [
-  {"court":"ACTON","code":"C2723"},
-  {"court":"BALHAM HIGH ROAD","code":"C6686"},
-  {"court":"BALHAM HIGH ROAD YOUTH","code":"C6013A"},
-  {"court":"BARKING","code":"C2814"},
-  {"court":"BARNET","code":"C2725"},
-  {"court":"BELMARSH (GREENWICH PSA)","code":"C2643B"},
-  {"court":"BEXLEY","code":"C2728"},
-  {"court":"BOW STREET","code":"C2641"},
-  {"court":"BRENT (WILLESDEN)","code":"C2762"},
-  {"court":"BRENTFORD","code":"C2769A"},
-  {"court":"BROMLEY","code":"C2727"},
-  {"court":"CAMBERWELL GREEN","code":"C2656"},
-  {"court":"CITY OF LONDON (JUSTICE ROOMS)","code":"C2631"},
-  {"court":"CLERKENWELL (COURT CLOSED)","code":"C2642"},
-  {"court":"CROYDON","code":"C2732"},
-  {"court":"EALING","code":"C2734"},
-  {"court":"FELTHAM","code":"C2769B"},
-  {"court":"GREENWICH","code":"C2643"},
-  {"court":"GREENWICH & LEWISHAM","code":"C6643"},
-  {"court":"GREENWICH & LEWISHAM YOUTH","code":"C6013C"},
-  {"court":"GREENWICH, LEWISHAM & SOUTHWARK YOUTH","code":"C6656"},
-  {"court":"HAMPSTEAD","code":"C2740"},
-  {"court":"HARROW","code":"C2760"},
-  {"court":"HAVERING","code":"C1837"},
-  {"court":"HENDON","code":"C2741"},
-  {"court":"HIGHBURY CORNER(EAST CENTRAL)","code":"C2663"},
-  {"court":"HIGHGATE (HARINGEY)","code":"C2742"},
-  {"court":"HILLINGDON","code":"C2766"},
-  {"court":"HORSEFERRY ROAD","code":"C2660"},
-  {"court":"INNER LONDON JUVENILE COURTS","code":"C6013"},
-  {"court":"KINGSTON","code":"C2812"},
-  {"court":"LAMBETH & WANDSWORTH YOUTH COURTS","code":"C6649"},
-  {"court":"MARLBOROUGH STREET","code":"C2644"},
-  {"court":"MARYLEBONE","code":"C2646"},
-  {"court":"NORTH AND NORTH EAST LONDON YOUTH COURTS","code":"C6650"}
-  ]
-app.locals.hearingOutcome = [
-  { "code": "CP01", "description": "Arrest warrant issued/adjourned indefinitely" },
-  { "code": "СР02", "description": "Change of solicitor" },
-  { "code": "СРОЗ", "description": "Representation order withdrawn" },
-  { "code": "CP04", "description": "Trial: acquitted" },
-  { "code": "CP05", "description": "Trial: mixed verdicts" },
-  { "code": "СР06", "description": "Trial: convicted" },
-  { "code": "СР07", "description": "Discontinued (before any pleas entered)" },
-  { "code": "CP08", "description": "Discontinued (after pleas entered)" },
-  { "code": "СР09", "description": "Guilty plea to all charges put - not listed for trial" },
-  { "code": "CP10", "description": "Guilty plea to all charges put after case listed for trial" },
-  { "code": "CP11", "description": "Guilty plea to substitute charges put - after case listed for trial" },
-  { "code": "CP12", "description": "Mix of guilty plea(s) and discontinuance - Not listed for trial" },
-  { "code": "CP13", "description": "Mix of guilty pleas and discontinuance - listed for trial" },
-  { "code": "CP16", "description": "Committal: discharged" },
-  { "code": "CP17", "description": "Extradition" },
-  { "code": "CP18", "description": "Case remitted from Crown to magistrates' court for sentencing" },
-  { "code": "CP19", "description": "Deferred sentence" },
-  { "code": "СР20", "description": "Granted anti-social behaviour order / sexual offences order / other order" },
-  { "code": "CP21", "description": "Part-granted anti-social behaviour order/ sexual offences order / other order" },
-  { "code": "CP22", "description": "Refused anti-social behaviour order/ sexual offences order / other order" },
-  { "code": "CP23", "description": "Varied anti-social behaviour order/ sexual offences order / other order" },
-  { "code": "CP24", "description": "Discharged anti-social behaviour order/ sexual offences order / other order" }
-]
-
-app.locals.matterType =  [
-  { "code": 1, "description": "Offences against the person" },
-  { "code": 2, "description": "Homicide and related grave offences" },
-  { "code": 3, "description": "Sexual offences and associated offences against children" },
-  { "code": 4, "description": "Robbery" },
-  { "code": 5, "description": "Burglary" },
-  { "code": 6, "description": "Criminal damage" },
-  { "code": 7, "description": "Theft (including taking vehicle without consent)" },
-  { "code": 8, "description": "Fraud and forgery and other offences of dishonesty not otherwise categorised" },
-  { "code": 9, "description": "Public order offences" },
-  { "code": 10, "description": "Drug offences" },
-  { "code": 11, "description": "Driving and motor vehicle offences (other than those covered by codes 1, 6 & 7)" },
-  { "code": 12, "description": "Other offences" },
-  { "code": 13, "description": "Terrorism" },
-  { "code": 14, "description": "Anti-social behaviour orders (for applications made prior to 23rd March 2015)" },
-  { "code": 15, "description": "Sexual offender orders" },
-  { "code": 16, "description": "Other prescribed proceedings" }
 ]
 // extensionConfig sets up variables used to add the scripts and stylesheets to each page.
 app.locals.extensionConfig = extensions.getAppConfig()

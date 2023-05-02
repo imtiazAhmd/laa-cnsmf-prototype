@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
+{% block pageScripts %}
+    <script>
+        var courtNameSelect = document.querySelector('#hearing-details-court')
 
+        accessibleAutocomplete.enhanceSelectElement({
+            confirmOnBlur: true,
+            autoSelect: true,
+            displayMenu: 'overlay',
+            minLength: 1,
+            selectElement: courtNameSelect
+        })
+
+    </script>
+
+{% endblock %}
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -57,11 +71,14 @@
                     <label class="govuk-label govuk-label--s" for="hearing-details-court">
                         In which court was the case heard at?
                     </label>
-                    <select class="govuk-select" id="hearing-details-court" name="hearing_details[court]">
-                        {% for courtData in sampleCourtData -%}
-                        <option value="{{courtData.Court}}">{{courtData.Court}}</option>
-                        {%- endfor %}
-                    </select>
+                    <div class="govuk autocomplete-wrapper">
+                        <select class="govuk-select" name="hearing_details[court]" id="hearing-details-court">
+                            <option></option>
+                            {% for court in courtLists -%}
+                                <option>{{ court['name'] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
                 <div class="govuk-form-group">
                     <p>Select with of the following apply to your case</p>
@@ -87,9 +104,9 @@
                     <select class="govuk-select"
                             id="hearing-details-outcome-of-hearing"
                             name="hearing_details[outcome_of_hearing]">
-                        {% for outcome in hearingOutcome -%}
-                        <option value="{{outcome.code}}">
-                            {{outcome.code}} - {{outcome.description}}
+                        {% for outcome in hearingOutcomeLists -%}
+                        <option value="{{outcome['code']}}">
+                            {{outcome['code']}} - {{outcome['description']}}
                             </option>
                         {%- endfor %}
                     </select>
@@ -101,9 +118,9 @@
                     <select class="govuk-select"
                             id="hearing-details-matter-type"
                             name="hearing_details[matter_type]">
-                        {% for matter in matterType -%}
-                        <option value="{{matter.code}}">
-                            {{matter.code}} - {{matter.description}}
+                        {% for matter in matterTypeLists -%}
+                        <option value="{{matter['code']}}">
+                            {{matter['code']}} - {{matter['description']}}
                             </option>
                         {%- endfor %}
                     </select>

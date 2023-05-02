@@ -3,7 +3,8 @@ const { systemPassword } = require('./config')
 const fetch = require('./data/fetch')
 const router = express.Router()
 const sessionData = require('./data/session-data-defaults')
-const other_defendants_list = require('./data/other_defendants');
+const formData = require('./data/form_data')
+
 
 const formatDate = (date) => {
   date = new Date(date);
@@ -52,6 +53,13 @@ router.get('/data', async (req, res, next) => {
 
 router.get('/provider/start_claim/:status', async (req, res, next) => {
   req.params.status === 'completed' ? res.render('provider/start_claim', { status: 'completed' }) : res.render('provider/start_claim', { status: 'new' })
+})
+
+router.get('/provider/hearing_details', async (req, res, next) => {
+  let courtLists = formData['list_of_courts']
+  let hearingOutcomeLists = formData['hearing_outcome']
+  let matterTypeLists = formData['matter_type']
+  res.render('provider/hearing_details', { courtLists: courtLists, hearingOutcomeLists: hearingOutcomeLists, matterTypeLists: matterTypeLists })
 })
 
 router.get('/provider/firm_details/:status', async (req, res, next) => {
