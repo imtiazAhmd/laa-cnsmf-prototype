@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-thirds">
+            <div class="govuk-panel govuk-panel--info govuk-!-text-align-left">
+                <h1 class="govuk-panel__title">
+                    You cannot use this service
+                </h1>
+                <p class="govuk-body">You can only use this service to claim for a non-standard magistrate or a breach for injunction payment.</p>
+
+                <p class="govuk-body">To claim for something else, go to:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>
+                        <a class="govuk-link govuk-link--inverse" href="#">Claim for Crown Court Defence (CCCD)</a>, if it’s a Crown Court case
+                    </li>
+                    <li>
+                        <a class="govuk-link govuk-link--inverse" href="#">Contracted Work and Administration (CWA)</a>, if it’s a Magistrate Court case or police station work
+                    </li>
+                </ul>
+                <p class="govuk-body"><a href="dashboard" class="govuk-link govuk-link--inverse">Back to all applications</a>.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

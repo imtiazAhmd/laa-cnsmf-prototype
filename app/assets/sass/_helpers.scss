@@ -1,3 +1,4 @@
+$govuk-blue: #005ea5;
 .hidden {
   display: none;
 }
@@ -12,4 +13,11 @@
 
 .autocomplete__hint, .autocomplete__input, .autocomplete__option {
   @include govuk-font($size: 19);
+}
+.govuk-panel--info{
+    background-color: $govuk-blue;
+    color: #fff;
+    > p,ul,li{
+      color: #fff !important
+    }
 }

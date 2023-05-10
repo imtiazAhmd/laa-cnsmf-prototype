@@ -51,6 +51,14 @@ router.get('/data', async (req, res, next) => {
   console.log(data)
 })
 
+router.post('/provider/claim_type', async (req, res, next) => {
+  let selected_claim_type_other = req.session.data['claim_type']['selected']
+  selected_claim_type_other === 'other'
+    ? res.redirect('./block_journey')
+    : res.redirect('./start_claim/new')
+})
+
+
 router.get('/provider/start_claim/:status', async (req, res, next) => {
   req.params.status === 'completed' ? res.render('provider/start_claim', { status: 'completed' }) : res.render('provider/start_claim', { status: 'new' })
 })

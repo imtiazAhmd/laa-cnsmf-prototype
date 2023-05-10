@@ -4,7 +4,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">What are you claiming for?</h1>
-            <form class="form" action="start_claim/new" method="post">
+            <form class="form" method="post">
                 {% set nonStandardHTML %}
                 {{ govukDateInput({
                     id: "claim-type-nsmf-date",
@@ -43,12 +43,6 @@
                     }) }}
                 {% endset -%}
 
-                {% set otherHtml %}
-                <p>This form can only be used to claim for a Non-standard magistrate or a Breach for injunction payment.</p>
-                <p>To claim for a Crime Lower standard payment, please use CWA via the LAA online portal.</p>
-                <p>To claim for a Crime Higher payment, please use CCCD via the CCCD portal.</p>
-                {% endset -%}
-
                 {{ govukRadios({
                     name: "claim_type[selected]",
                     items: [
@@ -68,10 +62,7 @@
                         },
                         {
                         value: "other",
-                        text: "Something else",
-                        conditional: {
-                            html: otherHtml
-                        }
+                        text: "Something else"
                         }
                     ]
                     }) }}
