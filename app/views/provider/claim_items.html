@@ -3,7 +3,9 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">What are you claiming ?</h1>
+            <h1 class="govuk-heading-xl">
+                What work items are you claiming for?
+            </h1>
             <form class="form" action="work_item_lists" method="post">
                 {{ govukRadios({
                     name: "claim_items[claim_types]",

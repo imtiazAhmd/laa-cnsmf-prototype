@@ -3,7 +3,7 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Why are you claiming a non-standard magistrate fee?</h1>
+            <h1 class="govuk-heading-xl">Why are you claiming a non-standard magistrate fee?</h1>
 
             <form class="form" action="claim_details" method="post">
                 {% set repOrderDateWithdrawnOn %}
@@ -26,15 +26,8 @@
                 {# Choice of reasons #}
                 {{ govukCheckboxes({
                     name: "claim_justification[value]",
-                    fieldset: {
-                        legend: {
-                        text: "Tick the boxes that apply",
-                        isPageHeading: true,
-                        classes: "govuk-fieldset__legend--m"
-                        }
-                    },
                     hint: {
-                        text: "Select all options that are relevant to you."
+                        text: "Select all that apply."
                     },
                     items: [
                         {
