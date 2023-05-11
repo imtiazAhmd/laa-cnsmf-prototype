@@ -3,10 +3,16 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Enter any other relevant information</h1>
+            <h1 class="govuk-heading-l">
+                Enter any other relevant information
+            </h1>
+            <div id="additional-info-relevant-info-hint" class="govuk-hint">
+                Do not include personal or financial information, like your National Insurance number or credit card details.
+            </div>
+
             <form class="form" action="upload_evidence" method="post">
-                <h2>In Progress</h2>
-                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                <textarea class="govuk-textarea" id="additional-info-relevant-info" name="additional_info[relevant_info]" rows="5" aria-describedby="additional-info-relevant-info-hint"></textarea>
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
         </div>
     </div>
