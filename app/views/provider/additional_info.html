@@ -9,9 +9,39 @@
             <div id="additional-info-relevant-info-hint" class="govuk-hint">
                 Do not include personal or financial information, like your National Insurance number or credit card details.
             </div>
-
             <form class="form" action="upload_evidence" method="post">
                 <textarea class="govuk-textarea" id="additional-info-relevant-info" name="additional_info[relevant_info]" rows="5" aria-describedby="additional-info-relevant-info-hint"></textarea>
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            <h1 class="govuk-fieldset__heading">
+                                Did the proceedings conclude over 3 months ago?
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="additional-info-proceedings-over-3-months-true" name="additional_info[proceedings_over_3_months]" type="radio" value="true" data-aria-controls="conditional-additional-info-proceedings-over-3-months">
+                                <label class="govuk-label govuk-radios__label" for="additional-info-proceedings-over-3-months-true">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-additional-info-proceedings-over-3-months">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="additional-info-proceedings-over-3-months-true-reason">
+                                        Tell us why you did not make this claim within 3 months of the conclusion of the proceedings
+                                    </label>
+                                    <textarea class="govuk-textarea" id="additional-info-proceedings-over-3-months-reason" name="additional_info[proceedings_over_3_months][reason]" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="additional-info-proceedings-over-3-months-false" name="additional_info[proceedings_over_3_months]" type="radio" value="false">
+                                <label class="govuk-label govuk-radios__label" for="additional-info-proceedings-over-3-months-false">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
         </div>
