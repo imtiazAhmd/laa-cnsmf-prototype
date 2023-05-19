@@ -6,39 +6,22 @@
             <h1 class="govuk-heading-xl">Confirm the following</h1>
             <form class="form" action="confirmation" method="post">
                 <p class="govuk-body">
-                    I certify, on behalf of the payee, that the information provided is correct. This work has not been and will not be the subject of any other claim for remuneration from criminal legal aid.</p>
-                {{ govukInput({
-                label: {
-                    text: "Signed"
-                },
-                classes: "govuk-input--width-10",
-                id: "declaration-solicitor",
-                name: "declaration[solicitor]",
-                hint:{
-                    text: "A solicitor or a fellow of the institute of legal executives"}
-            }) }}
+                    You agree that:
+                </p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>you've provided correct and complete information</li>
+                    <li>this work has not been and will not be the subject of any other claim for remuneration from criminal legal aid.</li>
+                </ul>
 
-                {{ govukDateInput({
-                id: "declaration-date",
-                namePrefix: "declaration[date]",
-                fieldset: {
-                    legend: {
-                    text: "Date"
-                    }
-                },
-                hint: {
-                    text: "For example, 27 3 2007"
-                }
-            }) }}
+                <div class="govuk-checkboxes govuk-!-margin-bottom-9" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                        <label class="govuk-label govuk-checkboxes__label" for="waste">
+                            I confirm the above is correct
+                        </label>
+                    </div>
+                </div>
 
-                {{ govukInput({
-                label: {
-                    text: "Name"
-                },
-                classes: "govuk-input--width-10",
-                id: "declaration-name",
-                name: "declaration[name]"
-            }) }}
                 <button class="govuk-button" data-module="govuk-button">Continue</button>
             </form>
         </div>

@@ -3,155 +3,117 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-l">Total costs</h1>
+            <h1 class="govuk-heading-xl">Review your claim</h1>
+            <span class="govuk-caption-l">Total estimated:</span>
+            <h2 class="govuk-heading-l">£1,200.00</h2>
             <form class="form" action="additional_info" method="post">
-                <div>
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">Travel</caption>
-                        <thead class="govuk-table__head"></thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                {# Waiting #}
-                <div>
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">Waiting</caption>
-                        <thead class="govuk-table__head"></thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                {# Attendences #}
-                <div>
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">Attendances</caption>
-                        <thead class="govuk-table__head"></thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {# Preparation #}
-                <div>
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">Preparation</caption>
-                        <thead class="govuk-table__head"></thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {# Advocacy #}
-                <div>
-                    <table class="govuk-table">
-                        <caption class="govuk-table__caption govuk-table__caption--m">Advocacy</caption>
-                        <thead class="govuk-table__head"></thead>
-                        <tbody class="govuk-table__body">
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total fee earner time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">If enhanced rates claimed % uplift</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['uplift_percentage']}}%</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Time</th>
-                                <td class="govuk-table__cell">{{data['claim_items']['claim_time']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                            <tr class="govuk-table__row">
-                                <th scope="row" class="govuk-table__header">Total costs</th>
-                                <td class="govuk-table__cell">£{{data['claim_items']['cost_of_claim']}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                {# Work items #}
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m">
+                        Work items
+                        <span class='govuk-!-text-align-right govuk-table-header-link'>
+                            <a class="govuk-link" href="work_item_lists">Change</a>
+                        </span>
+                    </caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Items</th>
+                            <th scope="col" class="govuk-table__header">Total per item</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Attendance with counsel assigned</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Attendance without counsel assigned</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Advocacy</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Preparation</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Travel</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Waiting</th>
+                            <td class="govuk-table__cell">£22.00</td>
+                        </tr>
+                        {# Total #}
+                        <tr class="govuk-table__row govuk-table__row__total">
+                            <th scope="row" class="govuk-table__header">Total</th>
+                            <td class="govuk-table__cell">£13.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {# Letters & Phone calls #}
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m">
+                        Letters and phone calls
+                        <span class='govuk-!-text-align-right govuk-table-header-link'>
+                            <a class="govuk-link" href="letters_calls">Change</a>
+                        </span>
+                    </caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Items</th>
+                            <th scope="col" class="govuk-table__header">Total per item</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Letters</th>
+                            <td class="govuk-table__cell">£12.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Phone calls</th>
+                            <td class="govuk-table__cell">£13.00</td>
+                        </tr>
+                        {# Total #}
+                        <tr class="govuk-table__row govuk-table__row__total">
+                            <th scope="row" class="govuk-table__header">Total</th>
+                            <td class="govuk-table__cell">£25.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {# Disbursements #}
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m">
+                        Disbursements
+                        <span class='govuk-!-text-align-right govuk-table-header-link'>
+                            <a class="govuk-link" href="disbursments">Change</a>
+                        </span>
+                    </caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Items</th>
+                            <th scope="col" class="govuk-table__header">Total per item</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Psychologist</th>
+                            <td class="govuk-table__cell">£12.00</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Lip Reader</th>
+                            <td class="govuk-table__cell">£202.00</td>
+                        </tr>
+                        {# Total #}
+                        <tr class="govuk-table__row govuk-table__row__total">
+                            <th scope="row" class="govuk-table__header">Total</th>
+                            <td class="govuk-table__cell">£214.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
         </div>
     </div>

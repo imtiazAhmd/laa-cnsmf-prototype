@@ -24,3 +24,22 @@ a.govuk-button{
       color: #fff !important
     }
 }
+
+.govuk-table-header-link{
+  float: right;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.govuk-table__row__total{
+  th,td{
+    border-top: 2px solid;
+  }
+  td{
+    font-weight: bold;
+  }
+}
+
+th.govuk-table__header{
+  width: 300px;
+}
