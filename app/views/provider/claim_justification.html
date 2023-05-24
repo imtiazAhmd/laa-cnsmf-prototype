@@ -3,63 +3,111 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">Why are you claiming a non-standard magistrate fee?</h1>
+            <h1 class="govuk-heading-xl">
+                Why are you claiming a non-standard magistrate court payment?
+            </h1>
 
             <form class="form" action="claim_details" method="post">
-                {% set repOrderDateWithdrawnOn %}
-                {{ govukDateInput({
-                    id: "claim-justification-rep-order-date-withdrawn-on",
-                    namePrefix: "claim_justification[rep_order_date_withdrawn_on]",
-                    hint: {
-                        text: "For example, 27 3 2007"
-                    }
-                }) }}
-                {% endset -%}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="claim-justification-title-hint">
+                        <div id="claim-justification-title-hint" class="govuk-hint">
+                            Select all that apply.
+                        </div>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            {# Core costs exceed higher limit #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-core-costs-exceeds-higher-limit" name="claim_justification[value]" type="checkbox" value="core costs exceed higher limit">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-core-costs-exceeds-higher-limit">
+                                    Core costs exceed higher limit
+                                </label>
+                            </div>
+                            {# Enhanced rates claimed #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-enhanced-rates-claimed" name="claim_justification[value]" type="checkbox" value="enhanced rates claimed">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-enhanced-rates-claimed">
+                                    Enhanced rates claimed
+                                </label>
+                            </div>
+                            {# Counsel or agent assigned #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-counsel-or-agent-assigned" name="claim_justification[value]" type="checkbox" value="counsel or agent assigned">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-counsel-or-agent-assigned">
+                                    Counsel or agent assigned
+                                </label>
+                            </div>
+                            {# Representation order withdrawn #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-rep-order-withdrawn" name="claim_justification[value]" type="checkbox" value="representation order withdrawn" data-aria-controls="conditional-representation-order-withdrawn">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-rep-order-withdrawn">
+                                    Representation order withdrawn
+                                </label>
+                            </div>
+                            {# Conditional section #}
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-representation-order-withdrawn">
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-justification-rep-order-date-withdrawn-on-hint">
+                                        <legend class="govuk-fieldset__legend govuk-label--s">
+                                            Withdrawn date
+                                        </legend>
+                                        <div id="claim-justification-rep-order-date-withdrawn-on-hint" class="govuk-hint">
+                                            For example, 27 3 2007
+                                        </div>
+                                        <div class="govuk-date-input" id="claim-justification-rep-order-date-withdrawn-on">
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="claim-justification-rep-order-date-withdrawn-on-day">
+                                                        Day
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-justification-rep-order-date-withdrawn-on-day" name="claim_justification[rep_order_date_withdrawn_on][day]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="claim-justification-rep-order-date-withdrawn-on-month">
+                                                        Month
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-justification-rep-order-date-withdrawn-on-month" name="claim_justification[rep_order_date_withdrawn_on][month]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="claim-justification-rep-order-date-withdrawn-on-year">
+                                                        Year
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claim-justification-rep-order-date-withdrawn-on-year" name="claim_justification[rep_order_date_withdrawn_on][year]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            {# Extradition #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-extradition" name="claim_justification[value]" type="checkbox" value="extradition">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-extradition">
+                                    Extradition
+                                </label>
+                            </div>
+                            {# Other #}
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-justification-other" name="claim_justification[value]" type="checkbox" value="other" data-aria-controls="conditional-other">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-justification-other">
+                                    Other
+                                </label>
+                            </div>
+                            {# Conditional #}
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-label--s" for="claim-justification-other">
+                                        Enter details
+                                    </label>
+                                    <textarea class="govuk-textarea" id="claim-justification-other" name="claim_justification[other_reason]" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
 
-                {% set otherReasonForClaiming %}
-                {{ govukTextarea({
-                    id: "claim-justification-other",
-                    name: "claim_justification[other_reason]",
-                    hint: { text: 'Provide details'}
-                    }) }}
-                {% endset -%}
-                {# Choice of reasons #}
-                {{ govukCheckboxes({
-                    name: "claim_justification[value]",
-                    hint: {
-                        text: "Select all that apply."
-                    },
-                    items: [
-                        {
-                        value: "guilty plea",
-                        text: "Core costs exceed higher limit"
-                        },
-                        {
-                        value: "uncontested breach",
-                        text: "Enhanced rates claimed"
-                        },
-                        {
-                        value: "discontinuance or withdrawal",
-                        text: "Councel or agent assigned"
-                        },
-                        {
-                        value: "warrant of arrest",
-                        text: "Representation order withdrawn on",
-                        conditional: {
-                            html: repOrderDateWithdrawnOn}
-                        },
-                        {
-                        value: "discontinuance_or_withdrawal",
-                        text: "Extradition"
-                        },
-                        {
-                        value: "discontinuance or withdrawal",
-                        text: "Other",
-                        conditional: {
-                            html: otherReasonForClaiming}
-                        }
-                    ]
-                    }) }}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
 
             </form>
