@@ -5,174 +5,196 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Case details</h1>
             <form class="form" action="case_disposal" method="post">
-                {{ govukInput({
-                    label: {
-                        text: "Main offence"
-                    },
-                    classes: "govuk-input--width-20",
-                    id: "case-details-main-offence",
-                    name: "case_details[main_offence]"
-                    }) }}
-                {{ govukDateInput({
-                    id: "case-details-offence-commited",
-                    namePrefix: "case_details[date_of_offence_commited]",
-                    fieldset: {
-                        legend: {
-                        text: "Date offence committed",
-                        classes: "govuk-fieldset__legend--s"
-                        }
-                    },
-                    hint: {
-                        text: "For example, 27 3 2023"
-                    }
-                }) }}
-
-                {{ govukCheckboxes({
-                    id: "case-details-value",
-                    name: "case_details[value]",
-                    fieldset: {
-                        legend: {
-                        text: "Tick the boxes that apply to your case",
-                        classes: "govuk-fieldset__legend--s"
-                        }
-                    },
-                    items: [
-                        {
-                        value: "there was an assigned counsel",
-                        text: "There was an assigned counsel"
-                        },
-                        {
-                        value: "there was an unassigned counsel",
-                        text: "There was an unassigned counsel"
-                        },
-                        {
-                        value: "there was an agent instructed",
-                        text: "There was an agent instructed"
-                        },
-                        {
-                        value: "the case has been remitted",
-                        text: "The case has been remitted from the Crown Court to the Magistrates Court"
-                        }
-                    ]
-                }) }}
-                <div id='crm8-upload-section' class='hidden'>
-                    <div class="govuk-form-group">
-                        <fieldset class="govuk-fieldset" aria-describedby="crm8-hint">
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                            <h1 class="govuk-fieldset__heading">
-                                How will you be providing the <a class="govuk-link" href='https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/346635/legal-aid-crm8-assigned-counsel.pdf' target='_blank'>CRM8 form?</a>
-                            </h1>
-                            </legend>
-                            <div id="crm8-hint" class="govuk-hint">
-                            Select one option.
-                            </div>
-                            <div class="govuk-radios" data-module="govuk-radios">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="case-details-send-crm8-via-upload" name="case_details[send_crm8_via]" type="radio" value="file upload" data-aria-controls="conditional-crm8-file-upload">
-                                <label class="govuk-label govuk-radios__label" for="case-details-send-crm8-via-upload">
-                                File upload
-                                </label>
-                            </div>
-
-                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-crm8-file-upload">
-                                {{ govukFileUpload({
-                                    id: "case-details-crm8-file-upload",
-                                    name: "case_details[crm8_form]",
-                                    label: {
-                                        text: "Upload a file"
-                                    }
-                                    }) }}
-                            </div>
-
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="case-details-send-crm8-via-post" name="case_details[send_crm8_via]" type="radio" value="via post" data-aria-controls="conditional-crm8-via-post">
-                                <label class="govuk-label govuk-radios__label" for="case-details-send-crm8-via-post">
-                                Via post
-                                </label>
-                            </div>
-
-                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-crm8-via-post">
-                                <p>Post your paper evidence at:</p>
-
-                                <p>Northgate Public Services<br>
-                                    26 Charles Way<br>
-                                    Bulwell<br>
-                                    Nottingham<br>
-                                    NG6 8RF</p>
-                            </div>
-
-                            </div>
-                        </fieldset>
+                {# Unique File Number (UFN) #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="case-details-ufn">
+                        Your unique file number
+                    </label>
+                    <div id="case-details-ufn-hint" class="govuk-hint">
+                        For example, 120223/001
                     </div>
+                    <input class="govuk-input govuk-input--width-10" id="case-details-ufn" name="case_details[ufn]" type="text" spellcheck="false" aria-describedby="case-details-ufn-hint" inputmode="numeric">
                 </div>
-                <div id='case-remitted-section' class='hidden'>
-                    {% set remittedFileUploadHtml %}
-                    {{ govukFileUpload({
-                        id: "case-details-remitted-file-upload",
-                        name: "case_details[crm8_form]",
-                        label: {
-                            text: "Upload a file"
-                        }
-                        }) }}
-                    {% endset %}
-                    {% set remittedPostHtml %}
-                    <p>Post your paper evidence at:</p>
-
-                    <p>Northgate Public Services<br>
-                        26 Charles Way<br>
-                        Bulwell<br>
-                        Nottingham<br>
-                        NG6 8RF</p>
-
-                    <p>This may delay the times in assessing your claims</p>
-                    {% endset %}
-                    {{ govukDateInput({
-                        id: "case-details-case-remitted-date",
-                        namePrefix: "case_details[case_remitted_date]",
-                        fieldset: {
-                            legend: {
-                            text: "Date in which case was remitted",
-                            isPageHeading: true,
-                            classes: "govuk-fieldset__legend--s"
-                            }
-                        },
-                        hint: {
-                            text: "For example, 27 3 2007"
-                        }
-                        }) }}
-
-                    {% call govukFieldset({
-                        legend: {
-                            text: "How will you be providing evidence?",
-                            classes: "govuk-fieldset__legend--s",
-                            isPageHeading: true
-                        }
-                        }) %}
-                    {{ govukRadios({
-                        name: "case_details[send_evidence_via]",
-                        fieldset: {
-                        },
-                        items: [
-                            {
-                            value: "file upload",
-                            text: "File upload",
-                            conditional: {
-                                html: remittedFileUploadHtml
-                            }
-                            },
-                            {
-                            value: "via post",
-                            text: "Via post",
-                            conditional: {
-                                html: remittedPostHtml
-                            }
-                            }
-                        ]
-                        }) }}
-                    {% endcall %}
+                {# Main Offence #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="case-details-main-offence">
+                        Main offence
+                    </label>
+                    <div id="case-details-main-offence-hint" class="govuk-hint">
+                        Enter the name of an offence, or select one from the suggestions that appear when you start to enter the name.
+                    </div>
+                    <input class="govuk-input govuk-input--width-20" id="case-details-main-offence" name="case_details[main_offence]" type="text" spellcheck="false" aria-describedby="case-details-main-offence-hint" inputmode="numeric">
                 </div>
+                {# Main Offence Date #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="case-details-offence-date-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Main offence date
+                        </legend>
+                        <div id="case-details-offence-date-hint" class="govuk-hint">
+                            For example, 27 3 2007
+                        </div>
+                        <div class="govuk-date-input" id="dob">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="case-details-offence-date-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="case-details-offence-date-day" name="case_details[offence_date][day]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="case-details-offence-date-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="case-details-offence-date-month" name="case_details[offence_date][month]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="case-details-offence-date-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="case-details-offence-date-year" name="case_details[offence_date][year]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                {# Assigned counsel #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Was there an assigned counsel?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-assigned-counsel-yes" name="case_details[assigned_counsel]" type="radio" value="yes">
+                                <label class="govuk-label govuk-radios__label" for="case-details-assigned-counsel-yes">
+                                    Yes
+                                </label>
+                                <div id="case-details-assigned-counsel-yes-hint" class="govuk-hint govuk-radios__hint">
+                                    We’ll ask you to upload your CRM8 form before you submit this claim
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-assigned-counsel-no" name="case_details[assigned_counsel]" type="radio" value="no">
+                                <label class="govuk-label govuk-radios__label" for="case-details-assigned-counsel-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Unassigned counsel #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Was there an unassigned counsel?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-unassigned-counsel-yes" name="case_details[unassigned_counsel]" type="radio" value="yes">
+                                <label class="govuk-label govuk-radios__label" for="case-details-unassigned-counsel-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-unassigned-counsel-no" name="case_details[unassigned_counsel]" type="radio" value="no">
+                                <label class="govuk-label govuk-radios__label" for="case-details-unassigned-counsel-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Instructed Agent #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Was there an instructed agent?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-instructed-agent-yes" name="case_details[instructed_agent]" type="radio" value="yes">
+                                <label class="govuk-label govuk-radios__label" for="case-details-instructed-agent-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-instructed-agent-no" name="case_details[instructed_agent]" type="radio" value="no">
+                                <label class="govuk-label govuk-radios__label" for="case-details-instructed-agent-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Remitted from crown court #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Has the case been remitted from the Crown Court to the magistrates’ court?
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-remitted-yes" name="case_details[remitted]" type="radio" value="yes" data-aria-controls="case-details-remitted-conditional">
+                                <label class="govuk-label govuk-radios__label" for="case-details-remitted-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            {# Conditional date #}
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="case-details-remitted-conditional">
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset" role="group" aria-describedby="case-details-case-remitted-date-hint">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                            Remittal date
+                                        </legend>
+                                        <div id="case-details-case-remitted-date-hint" class="govuk-hint">
+                                            For example, 27 3 2007
+                                        </div>
+                                        <div class="govuk-date-input" id="case-details-case-remitted-date">
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="case-details-case-remitted-date-day">
+                                                        Day
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="case-details-case-remitted-date-day" name="case_details[remitted][day]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="case-details-case-remitted-date-month">
+                                                        Month
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="case-details-case-remitted-date-month" name="case_details[remitted][month]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                            <div class="govuk-date-input__item">
+                                                <div class="govuk-form-group">
+                                                    <label class="govuk-label govuk-date-input__label" for="case-details-case-remitted-date-year">
+                                                        Year
+                                                    </label>
+                                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="case-details-case-remitted-date-year" name="case_details[remitted][year]" type="text" inputmode="numeric">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="case-details-remitted-no" name="case_details[remitted]" type="radio" value="no">
+                                <label class="govuk-label govuk-radios__label" for="case-details-remitted-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Submit button #}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
-
             </form>
         </div>
     </div>
