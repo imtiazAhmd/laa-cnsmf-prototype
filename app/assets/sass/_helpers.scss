@@ -14,6 +14,10 @@ $govuk-blue: #005ea5;
 a.govuk-button{
   text-decoration: none;
 }
+
+.govuk-fieldset{
+  margin-bottom: 48px;
+}
 .autocomplete__hint, .autocomplete__input, .autocomplete__option {
   @include govuk-font($size: 19);
 }

@@ -5,11 +5,11 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Your details</h1>
             <form class="form" action="../case_details" method="post">
-            {# Firm Details #}
+                {# Firm Details #}
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h2 class="govuk-fieldset__heading">
-                        Firm details</h2>
+                            Firm details</h2>
                     </legend>
                     {# Firm name #}
                     <div class="govuk-form-group">
@@ -35,7 +35,7 @@
                     {# Address line 2 #}
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="firm-details-address-line-2">
-                            Address line 2
+                            Address line 2 (optional)
                         </label>
                         <input class="govuk-input govuk-input--width-20" id="firm-details-address-line-2" name="firm_details[address_line_2]" type="text" value="{{ firmDetails['address_line_2'] }}">
                     </div>
@@ -49,57 +49,79 @@
                     {# Postcode #}
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="firm-details-postcode">
-                            Town or city
+                            Postcode
                         </label>
                         <input class="govuk-input govuk-input--width-10" id="firm-details-postcode" name="firm_details[postcode]" type="text" value="{{firmDetails['postcode']}}">
                     </div>
                 </fieldset>
-            {# Solicitor details #}
+                {# Solicitor details #}
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h2 class="govuk-fieldset__heading">
-                        Solicitor details</h2>
+                            Solicitor details</h2>
                     </legend>
-                {# Full Name #}
+                    <div class="govuk-hint">Enter the details of the solicitor managing this case</div>
+                    {# Full Name #}
                     <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s" for="firm-details-solicitor-name">
                             Solicitor full name
                         </label>
                         <input class="govuk-input govuk-input--width-20" id="firm-details-solicitor-name" name="firm_details[solicitor_name]" type="text" value="{{firmDetails['solicitor_name']}}">
                     </div>
-                {# Reference #}
+                    {# Reference #}
                     <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="firm-details-solicitor-referenc">
+                        <label class="govuk-label govuk-label--s" for="firm-details-solicitor-reference">
                             Solicitor reference number
                         </label>
-                        <input class="govuk-input govuk-input--width-20" id="firm-details-solicitor-referenc" name="firm_details[solicitor_reference]" type="text" value="{{firmDetails['solicitor_reference']}}">
+                        <div id="firm-details-solicitor-reference-hint" class="govuk-hint">
+                            For example, 2P341B
+                        </div>
+                        <input class="govuk-input govuk-input--width-20" id="firm-details-solicitor-reference" aria-describedby="firm-details-solicitor-reference-hint" name="firm_details[solicitor_reference]" type="text" value="{{firmDetails['solicitor_reference']}}">
                     </div>
                 </fieldset>
 
-            {# Your contact details #}
-                <fieldset class="govuk-fieldset">
+                {# Your contact details #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                         <h2 class="govuk-fieldset__heading">
-                        Your contact details</h2>
+                            Do you want to add alternative contact details?</h2>
                     </legend>
-                {# Contact Name #}
-                    <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="firm-details-contact-name">
-                            Your full name
-                        </label>
-                        <input class="govuk-input govuk-input--width-20" id="firm-details-contact-name" name="firm_details[contact_name]" type="text" value="{{firmDetails['contact_name']}}">
-                    </div>
-                {# Email #}
-                    <div class="govuk-form-group">
-                        <label class="govuk-label govuk-label--s" for="firm-details-contact-email">
-                            Email address
-                        </label>
-                        <div id="authentication-code-hint" class="govuk-hint">
-                            For example,your_name@email.com
+                        <div id="contact-hint" class="govuk-hint">
+                            We’ll use the contact details on your account if we need to ask you for more information to complete your claim. If you add alternative contact details we’ll use those instead.
                         </div>
-                        <input class="govuk-input govuk-input--width-20" id="firm-details-contact-email" name="firm_details[contact_email]" type="text" value="{{firmDetails['contact_email']}}">
-                    </div>
-                </fieldset>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="firm-details-contact-yes" name="firm_details[contact]" type="radio" value="email" data-aria-controls="conditional-contact">
+                                <label class="govuk-label govuk-radios__label" for="firm-details-contact-yes">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                                {# Contact Name #}
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-label--s" for="firm-details-contact-name">
+                                        Full name of alternative contact
+                                    </label>
+                                    <input class="govuk-input govuk-input--width-20" id="firm-details-contact-name" name="firm_details[contact_name]" type="text">
+                                </div>
+                                {# Email #}
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-label--s" for="firm-details-contact-email">
+                                        Email address of alternative contact
+                                    </label>
+                                    <input class="govuk-input govuk-input--width-20" id="firm-details-contact-email" name="firm_details[contact_email]" type="text" value="{{firmDetails['contact_email']}}">
+                                </div>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="firm-details-contact-no" name="firm_details[contact]" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                                <label class="govuk-label govuk-radios__label" for="firm-details-contact-no">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
                 {# Submit button #}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
