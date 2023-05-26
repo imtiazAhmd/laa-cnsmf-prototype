@@ -7,102 +7,178 @@
                 What work items are you claiming for?
             </h1>
             <form class="form" action="work_item_lists" method="post">
-                {{ govukRadios({
-                    name: "claim_items[claim_types]",
-                    items: [
-                        {
-                        value: "attendance_without_counsel_assigned",
-                        text: "Attendance without counsel assigned"
-                        },
-                        {
-                        value: "advocacy",
-                        text: "Advocacy"
-                        },
-                        {
-                        value: "wales",
-                        text: "Wales"
-                        },
-                        {
-                        value: "northern-ireland",
-                        text: "Northern Ireland"
-                        }
-                    ]
-                }) }}
-                {{ govukInput({
-                    label: {
-                        text: "Fee earner initials"
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[fee_earners_initial]"
-                }) }}
+                {# Type of work #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Type of work
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            {# Attendance with counsel assigned #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-attendance-with-counsel" name="claim_items[claim_types]" type="radio" value="attendance with counsel assigned" aria-describedby="claim-items-claim-types-attendance-with-counsel-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-attendance-with-counsel">
+                                    Attendance with counsel assigned
+                                </label>
+                                <div id="claim-items-claim-types-attendance-with-counsel-hint" class="govuk-hint govuk-radios__hint">
+                                    £31.03 per hour
+                                </div>
+                            </div>
+                            {# Attendance without counsel assigned #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-attendance-without-counsel" name="claim_items[claim_types]" type="radio" value="attendance without counsel assigned" aria-describedby="claim-items-claim-types-attendance-without-counsel-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-attendance-without-counsel">
+                                    Attendance without counsel assigned
+                                </label>
+                                <div id="claim-items-claim-types-attendance-without-counsel-hint" class="govuk-hint govuk-radios__hint">
+                                    £31.03 per hour
+                                </div>
+                            </div>
+                            {# Preperation #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-preperation" name="claim_items[claim_types]" type="radio" value="preperation" aria-describedby="claim-items-claim-types-preperation-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-preperation">
+                                    Preparation
+                                </label>
+                                <div id="claim-items-claim-types-preperation-hint" class="govuk-hint govuk-radios__hint">
+                                    £45.35 per hour
+                                </div>
+                            </div>
+                            {# Advocacy #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-advocacy" name="claim_items[claim_types]" type="radio" value="advocacy" aria-describedby="claim-items-claim-types-advocacy-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-advocacy">
+                                    Advocacy
+                                </label>
+                                <div id="claim-items-claim-types-advocacy-hint" class="govuk-hint govuk-radios__hint">
+                                    £56.89 per hour
+                                </div>
+                            </div>
+                            {# Travel #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-travel" name="claim_items[claim_types]" type="radio" value="travel" aria-describedby="claim-items-claim-types-travel-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-travel">
+                                    Travel
+                                </label>
+                                <div id="claim-items-claim-types-travel-hint" class="govuk-hint govuk-radios__hint">
+                                    £24.00 per hour
+                                </div>
+                            </div>
+                            {# Waiting #}
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="claim-items-claim-types-waiting" name="claim_items[claim_types]" type="radio" value="waiting" aria-describedby="claim-items-claim-types-waiting-hint">
+                                <label class="govuk-label govuk-radios__label" for="claim-items-claim-types-waiting">
+                                    Waiting
+                                </label>
+                                <div id="claim-items-claim-types-waiting-hint" class="govuk-hint govuk-radios__hint">
+                                    £24.00 per hour
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Time spent #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-items-time-spent-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Time spent
+                        </legend>
+                        <div id="claim-items-time-spent-hint" class="govuk-hint">
+                            For example, 1 hour and 30 minutes
+                        </div>
+                        <div class="govuk-date-input" id="claim-items-time-spent">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="claim-items-time-spent-hour">
+                                        Hours
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-items-time-spent-hour" name="claim_items[time_spent][hr]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="claim-items-time-spent-min">
+                                        Minutes
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-items-time-spent-min" name="claim_items[time_spent][min]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Completion date #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="claim-items-completion-date-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            Completion date
+                        </legend>
+                        <div id="claim-items-completion-date-hint" class="govuk-hint">
+                            For example, 27 3 2007
+                        </div>
+                        <div class="govuk-date-input" id="claim-items-completion-date">
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="claim-items-completion-date-day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-items-completion-date-day" name="claim_items[completion_date][day]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="claim-items-completion-date-month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="claim-items-completion-date-month" name="claim_items[completion_date][month]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="claim-items-completion-date-year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="claim-items-completion-date-year" name="claim_items[completion_date][year]" type="text" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                {# Fee earner's initial #}
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="claim-items-fee-earner-initial" ">
+                        Fee earner initials
+                    </label>
+                    <div id="claim-items-fee-earner-initial-hint" class="govuk-hint">
+                        For example, JMD
+                    </div>
+                    <input class="govuk-input govuk-input--width-4 govuk-input--extra-letter-spacing" id="claim-items-fee-earner-initial" name="claim_items[fee_earner_initial]" type="text" spellcheck="false" aria-describedby="claim-items-fee-earner-initial-hint">
+                </div>
 
-                {{ govukDateInput({
-                    id: "claim_items-claim_date",
-                    namePrefix: "claim_items[claim_date]",
-                    fieldset: {
-                        legend: {
-                        text: "Date"
-                        }
-                    },
-                    hint: {
-                        text: "For example, 27 3 2007"
-                    }
-                }) }}
-                {# Time #}
-                {{ govukInput({
-                    label: {
-                        text: "Time"
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[claim_time]",
-                    hint:{
-                        text: 'For example, 00:40'
-                        }
-                }) }}
-                {# Hourly rate #}
-                {{ govukInput({
-                    label: {
-                        text: "Cost of hourly rate"
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[hourly_rate]",
-                    hint:{
-                        text: 'For example, £68.87'
-                        }
-                }) }}
-                {# Basic claim #}
-                {{ govukInput({
-                    label: {
-                        text: "Cost of basic claim"
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[basic_claim]",
-                    hint:{
-                        text: 'For example, £68.87'
-                        }
-                }) }}
-                {# Claim #}
-                {{ govukInput({
-                    label: {
-                        text: "Cost of claim"
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[cost_of_claim]",
-                    hint:{
-                        text: 'For example, £500'
-                        }
-                }) }}
-                {# Uplift percentage #}
-                {{ govukInput({
-                    label: {
-                        text: "Uplift claim percentage "
-                    },
-                    classes: "govuk-input--width-5",
-                    name: "claim_items[uplift_percentage]",
-                    hint:{
-                        text: 'For example, 100%'
-                        }
-                }) }}
+                {# Uplift #}
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="claim-items-uplift" name="claim_items[uplift]" type="checkbox" value="true" data-aria-controls="conditional-claim-items-uplift-percentage">
+                                <label class="govuk-label govuk-checkboxes__label" for="claim-items-uplift">
+                                    Apply an uplift to this work
+                                </label>
+                            </div>
+                            {# Conditional #}
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-claim-items-uplift-percentage">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label" for="claim-items-uplift-percentage">
+                                        For example, from any percentage from 1 to 100
+                                    </label>
+                                    <div class="govuk-input__wrapper">
+                                        <input class="govuk-input govuk-input--width-4" id="claim-items-uplift-percentage" name="claim_items[uplift][percentage]" type="text" spellcheck="false">
+                                        <div class="govuk-input__suffix" aria-hidden="true">%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
 
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
             </form>
