@@ -183,6 +183,38 @@
                 <section id='claim-items-total-section'>
                     <span class="govuk-caption-l">Total cost</span>
                     <h1 class="govuk-heading-l">£180.00</h1>
+                    {# View by work item #}
+                    <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                                View by work item
+                            </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                            <table class="govuk-table">
+                                <thead class="govuk-table__head">
+                                    <tr class="govuk-table__row">
+                                        <th scope="col" class="govuk-table__header">Work item</th>
+                                        <th scope="col" class="govuk-table__header">Total per item</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">January</th>
+                                        <td class="govuk-table__cell">£95</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">February</th>
+                                        <td class="govuk-table__cell">£55</td>
+                                    </tr>
+                                    <tr class="govuk-table__row">
+                                        <th scope="row" class="govuk-table__header">March</th>
+                                        <td class="govuk-table__cell">£125</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
                 </section>
                 {# Submit button #}
                 <button class="govuk-button" data-module="govuk-button">Save and continue</button>
