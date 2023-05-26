@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: make
+        run: docker build . -t cnsmf 
 
       - name: Push to ECR (CP)
         id: ecr-cp
@@ -26,7 +26,7 @@ jobs:
           access-key-id: ${{ secrets.ECR_AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.ECR_AWS_SECRET_ACCESS_KEY }}
           region: eu-west-2
-          local-image: ministryofjustice/cdpt-url-redirect-service
+          local-image: cnsmf
           image: ${{ secrets.ECR_NAME }}:${{ github.sha }}, ${{ secrets.ECR_NAME }}:dev.latest
 
       - name: Push to ECR (TP)
@@ -36,7 +36,7 @@ jobs:
           access-key-id: ${{ secrets.TP_ECR_AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.TP_ECR_AWS_SECRET_ACCESS_KEY }}
           region: eu-west-2
-          local-image: ministryofjustice/cdpt-url-redirect-service
+          local-image: cnsmf
           image: ${{ secrets.TP_ECR_NAME }}:${{ github.sha }}, ${{ secrets.TP_ECR_NAME }}:latest
 
   deploy-dev:
