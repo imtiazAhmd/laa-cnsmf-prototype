@@ -1,7 +1,10 @@
-FROM node:10.15.3-slim
+FROM node:20-slim
 MAINTAINER HMPPS Digital Studio <info@digital.justice.gov.uk>
 ARG BUILD_NUMBER
 ARG GIT_REF
+
+#RUN apt-get update && apt-get install -y make python
+RUN apt-get -y update && apt-get -y install curl
 
 RUN apt-get update && apt-get install -y make python
 
@@ -23,11 +26,13 @@ ADD . .
 RUN curl https://s3.amazonaws.com/rds-downloads/rds-ca-2019-root.pem > /app/root.cert
 RUN curl https://s3.amazonaws.com/rds-downloads/rds-ca-2015-root.pem >> /app/root.cert
 
-RUN npm install && \
-    npm run build && \
-    export BUILD_NUMBER=${BUILD_NUMBER} && \
-    export GIT_REF=${GIT_REF} && \
-    npm run record-build-info
+RUN npm install
+
+#RUN npm install && \
+#    npm run build && \
+#    export BUILD_NUMBER=${BUILD_NUMBER} && \
+#    export GIT_REF=${GIT_REF} && \
+#    npm run record-build-info
 
 ENV PORT=3000
 ENV NODE_ENV='production'
