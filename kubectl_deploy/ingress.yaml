@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cnsmfdev-ingress
+  namespace: laa-claim-non-standard-magistrate-fee-high-fidelity-prototype
+  annotations:
+    external-dns.alpha.kubernetes.io/set-identifier: cnsmfdev-ingress-laa-claim-non-standard-magistrate-fee-dev-green
+    external-dns.alpha.kubernetes.io/aws-weight: "100"
+spec:
+  ingressClassName: default
+  tls:
+  - hosts:
+    - cnsmfdev.apps.live.cloud-platform.service.justice.gov.uk
+  rules:
+  - host: cnsmfdev.apps.live.cloud-platform.service.justice.gov.uk
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: laa-claim-non-standard-magistrate-fee-high-fidelity-prototype
+            port:
+              number: 5000
+
