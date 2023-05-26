@@ -36,6 +36,9 @@ RUN npm install
 
 ENV PORT=3000
 ENV NODE_ENV='production'
+
+ENV PASSWORD='12345'
+
 EXPOSE 3000
 
 RUN chown -R appuser:appgroup /app
