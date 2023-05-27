@@ -11,6 +11,55 @@ const formatDate = (date) => {
   return date.getDate() + '/' + (date.getMonth() + 1).toString().padStart(2, "0") + '/' + date.getFullYear();
 }
 
+const formatDateWithMonth = (date) => {
+  date = new Date(date);
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+  return date.getDate() + ' ' +monthNames[date.getMonth()]+' '+date.getFullYear();
+}
+
+function isObjectAlreadyPresent(arr, obj) {
+  return arr.some(item => JSON.stringify(item) === JSON.stringify(obj));
+}
+
+function capitalizeFirstLetter(str) {
+  if (typeof str !== 'string' || str.length === 0) {
+    return str; // Return the input if it's not a non-empty string
+  }
+
+  const firstLetter = str.charAt(0).toUpperCase(); // Get the first letter and capitalize it
+  const remainingLetters = str.slice(1); // Get the remaining letters
+  return firstLetter + remainingLetters; // Concatenate the capitalized first letter with the remaining letters
+}
+async function groupByProcessedDate(data) {
+  return new Promise(resolve => {
+    const groupedData = [];
+
+    // Iterate over each item in the data
+    data.forEach(item => {
+      const processedDate = item.processed_date;
+
+      // Check if the processed_date already exists in the groupedData array
+      const groupIndex = groupedData.findIndex(group => group.processed_date === processedDate);
+
+      if (groupIndex !== -1) {
+        // If the processed_date already exists, push the item to the existing group
+        groupedData[groupIndex].items.push(item);
+      } else {
+        // If the processed_date doesn't exist, create a new group with the item
+        groupedData.push({
+          processed_date: processedDate,
+          items: [item]
+        });
+      }
+    });
+
+    resolve(groupedData);
+  });
+}
+
+
 router.get('/provider/dashboard', async (req, res, next) => {
   // delete req.session.data
   try {
@@ -75,9 +124,29 @@ router.get('/provider/firm_details/:status', async (req, res, next) => {
   req.params.status === 'completed' ? res.render('provider/firm_details', { firmDetails: data }) : res.render('provider/firm_details')
 })
 
-router.get('/provider/claim_items', async (req, res, next) => {
-  let data = req.session.data
-  res.render('provider/claim_items', { data })
+router.get('/provider/work_item_lists', async (req, res, next) => {
+  let data = req.session.data.claim_items
+  let processed_date = Date.parse(data.completion_date.year+'-'+data.completion_date.month+'-'+data.completion_date.day)
+  let processed_items = []
+  let workItem = {
+      claim_types: capitalizeFirstLetter(data.claim_types),
+      processed_date: formatDateWithMonth(processed_date),
+      time_spent: data.time_spent,
+      fee_earner_initial: data.fee_earner_initial
+    }
+
+  if(!isObjectAlreadyPresent(formData.work_items, workItem)){
+    formData.work_items.push(workItem)
+  }
+  groupByProcessedDate(formData.work_items)
+  .then(groupedData => {
+    processed_items = groupedData
+    console.log(JSON.stringify(groupedData, null, 2));
+    res.render('provider/work_item_lists', { workItems: processed_items })
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  })
 })
 
 router.get('/provider/claim_summary', async (req, res, next) => {

@@ -3,95 +3,51 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-thirds">
-            <h1 class="govuk-heading-xl">You added {{testData.length}}
+            <h1 class="govuk-heading-xl">You added
+                {{workItems.length}}
                 work item{% if testData.length > 1 %}s{% endif %}
             </h1>
             {# Table of work items #}
-            <table class="govuk-table">
-                <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption>
-                <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-half">Date</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Fee earner</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Travel</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Waiting</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Attendances</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Preperation</th>
-                        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Advocacy</th>
-                    </tr>
-                </thead>
-                <tbody class="govuk-table__body">
-                    {% for data in testData -%}
+            {% for workItem in workItems -%}
+                <table class="govuk-table">
+                    <caption class="govuk-table__caption govuk-table__caption--m">{{workItem.processed_date}}</caption>
+                    <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">{{data.date}}</td>
-                            <td class="govuk-table__cell">{{data.fee_earner}}</td>
-                            <td class="govuk-table__cell">{{data.travel}}</td>
-                            <td class="govuk-table__cell">{{data.waiting}}</td>
-                            <td class="govuk-table__cell">{{data.attendances}}</td>
-                            <td class="govuk-table__cell">{{data.preperation}}</td>
-                            <td class="govuk-table__cell">{{data.advocacy}}</td>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-half">Type of work</th>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Time spent</th>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Fee earner</th>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Actions</th>
                         </tr>
-                    {%- endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        {% for item in workItem.items -%}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell">{{item.claim_types}}</td>
+                                <td class="govuk-table__cell">{{item.time_spent.hr}}
+                                    hour{% if item.time_spent.hr > 1 %}s{% endif %}
+                                    {{item.time_spent.min}}
+                                    minute{% if item.time_spent.min > 1 %}s{% endif %}
+                                </td>
+                                <td class="govuk-table__cell">{{item.fee_earner_initial}}</td>
+                                <td class="govuk-table__cell">Change</td>
 
-            {# Pagination and count#}
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-half">
-                    {{ govukPagination({
-                        previous: {
-                            href: "#"
-                        },
-                        next: {
-                            href: "#"
-                        },
-                        items: [
-                                    {
-                                    number: 1,
-                                    current: true,
-                                    href: "#"
-                                    },
-                                    {
-                                    number: 2,
-                                    href: "#"
-                                    },
-                                    {
-                                    number: 3,
-                                    href: "#"
-                                    },
-                                    {
-                                    ellipsis: true
-                                    },
-                                    {
-                                    number: 9,
-                                    href: "#"
-                                    }
-                                ]
-                    }) }}
-                </div>
-                <div class="govuk-grid-column-one-half govuk-!-padding-top-2 govuk-!-text-align-right">
-                    <p class="govuk-body govuk-!-font-size-19 govuk-!-display-inline">
-                        Showing
-                        <span class='govuk-!-font-weight-bold'>1</span>
-                        to
-                        <span class='govuk-!-font-weight-bold'>6</span>
-                        of
-                        <span class='govuk-!-font-weight-bold'>54</span>
-                        work items
-                    </p>
-                </div>
+                            </tr>
+                        {%- endfor %}
+                    </tbody>
+                </table>
+                {%- endfor%}
+
+                <form class="form" action="letters_calls" method="post">
+                    <div class="govuk-button-group">
+                        <button class="govuk-button" data-module="govuk-button">
+                            Save and continue
+                        </button>
+                        <a href="claim_items" class="govuk-button govuk-button--secondary">
+                            Add work item
+                        </a>
+                    </div>
+
+                </form>
             </div>
-            <form class="form" action="letters_calls" method="post">
-                <div class="govuk-button-group">
-                    <button class="govuk-button" data-module="govuk-button">
-                        Save and continue
-                    </button>
-                    <a href="claim_items" class="govuk-button govuk-button--secondary">
-                        Add work item
-                    </a>
-                </div>
-
-            </form>
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}

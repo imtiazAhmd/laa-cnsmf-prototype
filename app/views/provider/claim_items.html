@@ -180,7 +180,7 @@
                     </fieldset>
                 </div>
                 {# Calculation #}
-                <section id='claim-items-calculation-section'>
+                <section id='claim-items-calculation-section' class='hidden'>
                     <table class="govuk-table">
                         <caption class="govuk-table__caption govuk-table__caption--m">Calculation</caption>
                         <thead class="govuk-table__head">
@@ -191,8 +191,8 @@
                         </thead>
                         <tbody class="govuk-table__body">
                             <tr class="govuk-table__row">
-                                <td class="govuk-table__cell">£10.00</td>
-                                <td class="govuk-table__cell">£100</td>
+                                <td class="govuk-table__cell" id='claim-items-calculation-before-uplift-value'>£0.00</td>
+                                <td class="govuk-table__cell" id='claim-items-calculation-after-uplift-value'>£0.00</td>
                             </tr>
 
                         </tbody>
@@ -201,7 +201,7 @@
                 {# Total #}
                 <section id='claim-items-total-section'>
                     <span class="govuk-caption-l">Total cost</span>
-                    <h1 class="govuk-heading-l">£180.00</h1>
+                    <h1 class="govuk-heading-l" id='claim-items-total'>£0.00</h1>
                     {# View by work item #}
                     <details class="govuk-details" data-module="govuk-details">
                         <summary class="govuk-details__summary">
